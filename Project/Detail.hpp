@@ -3,7 +3,7 @@
 #include "IPriorityElement.hpp"
 
 template<std::equality_comparable Type>
-class Detail : PriorityQueue::IPriorityElement<Type>
+class Detail : PriorityQueue::Interfaces::IPriorityElement<Type>
 {
 public:
 

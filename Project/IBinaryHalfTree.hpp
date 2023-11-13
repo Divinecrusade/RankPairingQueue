@@ -5,7 +5,7 @@
 
 namespace PriorityQueue
 {
-    namespace BinaryHalfTree
+    namespace Interfaces
     {
         template<class ElType, std::equality_comparable Type>
         __interface IBinaryHalfTree

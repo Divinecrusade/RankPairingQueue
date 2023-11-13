@@ -5,13 +5,16 @@
 
 namespace PriorityQueue
 {
-    template<std::equality_comparable Type>
-    __interface IPriorityElement
+    namespace Interfaces
     {
-    public:
+        template<std::equality_comparable Type>
+        __interface IPriorityElement
+        {
+        public:
 
-        virtual unsigned get_priority() const = 0;
-        virtual void set_priority(int new_priority) = 0;
-        virtual Type const& get_data() const = 0;
-    };
+            virtual unsigned get_priority() const = 0;
+            virtual void set_priority(int new_priority) = 0;
+            virtual Type const& get_data() const = 0;
+        };
+    }
 }   
