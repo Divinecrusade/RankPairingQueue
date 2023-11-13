@@ -1,13 +1,13 @@
 #pragma once
 
 #include "IPriorityQueue.hpp"
-#include "IBinaryHalfTree.hpp"
+#include "BinaryHalfTree.hpp"
 #include "ForwardList.hpp"
 
 namespace PriorityQueue
 {
     template<std::equality_comparable Type>
-    class RankPairingQueue : public Interfaces::IPriorityQueue
+    class RankPairingQueue : public Interfaces::IPriorityQueue<Type>
     {
     public:
         
@@ -20,7 +20,7 @@ namespace PriorityQueue
 
         virtual ~RankPairingQueue();
 
-        virtual void insert(IPriorityElement<Type> const* element) = 0;
+        virtual void insert(Interfaces::IPriorityElement<Type> const* element) = 0;
         virtual Interfaces::IPriorityElement<Type> const* minimum() const = 0;
         virtual Interfaces::IPriorityElement<Type>* extract_min() = 0;
         virtual void decrease_key(Type const& data, unsigned priority) = 0;
@@ -28,6 +28,6 @@ namespace PriorityQueue
 
     private:
         
-        Interfaces::IForwardList<Interfaces::::IBinaryHalfTree&, Type>* heap;
+        Auxiliry::ForwardList<Auxiliry::BinaryHalfTree<Type>>* heap;
     };
 }

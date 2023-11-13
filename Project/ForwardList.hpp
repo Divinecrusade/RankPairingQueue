@@ -6,11 +6,12 @@ namespace PriorityQueue
 {
     namespace Auxiliry
     {
-        template<class ElType, std::equality_comparable Type>
-        class ForwardList : public Interfaces::IList
+        template<class ElType>
+        class ForwardList : public Interfaces::IList<ElType>
         {
         private:
 
+            template<class ElType>
             struct Node
             {
                 ElType& element;
@@ -22,12 +23,11 @@ namespace PriorityQueue
             virtual void insert(ElType const& element, size_t pos = 0U) = 0;
             virtual ElType& get(size_t pos) = 0;
             virtual ElType& remove(size_t pos) = 0;
-            virtual ElType& find(Type key) = 0;
 
         private:
 
-            ForwardList* first{ nullptr };
-            ForwardList* last { nullptr };
+            Node* first{ nullptr };
+            Node* last { nullptr };
         };
     }
 }
