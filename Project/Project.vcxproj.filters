@@ -16,6 +16,12 @@
     <Filter Include="Файлы заголовков\interfaces">
       <UniqueIdentifier>{bd502c93-e357-4e93-acf6-dbd5f1842b8d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\auxiliry">
+      <UniqueIdentifier>{a39869bb-daec-4eb5-9941-5d3795b6311b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\main">
+      <UniqueIdentifier>{a7fe193b-ee5a-478f-92cf-e1f5d490796c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IPriorityQueue.hpp">
@@ -24,14 +30,17 @@
     <ClInclude Include="IBinaryHalfTree.hpp">
       <Filter>Файлы заголовков\interfaces</Filter>
     </ClInclude>
-    <ClInclude Include="IVertex.hpp">
-      <Filter>Файлы заголовков\interfaces</Filter>
-    </ClInclude>
     <ClInclude Include="IPriorityElement.hpp">
       <Filter>Файлы заголовков\interfaces</Filter>
     </ClInclude>
     <ClInclude Include="IList.hpp">
       <Filter>Файлы заголовков\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="ForwardList.hpp">
+      <Filter>Файлы заголовков\auxiliry</Filter>
+    </ClInclude>
+    <ClInclude Include="RankPairingQueue.hpp">
+      <Filter>Файлы заголовков\main</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
