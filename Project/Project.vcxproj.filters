@@ -42,5 +42,16 @@
     <ClInclude Include="RankPairingQueue.hpp">
       <Filter>Файлы заголовков\main</Filter>
     </ClInclude>
+    <ClInclude Include="Detail.hpp">
+      <Filter>Файлы заголовков\main</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryHalfTree.hpp">
+      <Filter>Файлы заголовков\auxiliry</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="TestForwardList.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
