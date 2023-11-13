@@ -6,8 +6,8 @@ namespace PriorityQueue
 {
     namespace Auxiliry
     {
-        template<class ElType, std::equality_comparable Type>
-        class BinaryHalfTree : public Interfaces::IBinaryHalfTree
+        template<std::equality_comparable Type, class ElType>
+        class BinaryHalfTree : public Interfaces::IBinaryHalfTree<Type, ElType>
         {
         public:
 
