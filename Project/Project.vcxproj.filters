@@ -36,7 +36,7 @@
     <ClInclude Include="RankedBinaryTree.hpp">
       <Filter>Файлы заголовков\auxiliry</Filter>
     </ClInclude>
-    <ClInclude Include="RankedBinaryHalfTreeRoot.hpp">
+    <ClInclude Include="RBHalfTreeRoot.hpp">
       <Filter>Файлы заголовков\main</Filter>
     </ClInclude>
   </ItemGroup>
@@ -54,6 +54,9 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="RankedBinaryTree.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="RBHalfTreeRoot.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

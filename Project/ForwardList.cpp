@@ -104,3 +104,8 @@ void PriorityQueue::Auxiliry::ForwardList::remove(size_t pos)
 
     delete cur;
 }
+
+bool PriorityQueue::Auxiliry::ForwardList::is_empty() const noexcept
+{
+    return first == nullptr;
+}
