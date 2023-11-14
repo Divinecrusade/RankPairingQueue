@@ -6,17 +6,17 @@ public:
 
     Detail() = delete;
     Detail(int id, unsigned priority);
-    Detail(Detail const&) = delete;
+    Detail(Detail const& other_detail);
     Detail(Detail&&) = delete;
 
     Detail& operator=(Detail const&) = delete;
     Detail& operator=(Detail&&) = delete;
 
-    virtual ~Detail() = default;
+    ~Detail() = default;
 
-    virtual unsigned get_priority() const;
-    virtual void set_priority(unsigned new_priority);
-    virtual int get_id() const;
+    unsigned get_priority() const noexcept;
+    void set_priority(unsigned new_priority) noexcept;
+    int get_id() const noexcept;
 
 private:
     
