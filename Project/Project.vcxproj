@@ -132,9 +132,6 @@
     <ClInclude Include="RankedBinaryTree.hpp" />
     <ClInclude Include="Detail.hpp" />
     <ClInclude Include="ForwardList.hpp" />
-    <ClInclude Include="IList.hpp" />
-    <ClInclude Include="IPriorityElement.hpp" />
-    <ClInclude Include="IPriorityQueue.hpp" />
     <ClInclude Include="RankPairingQueue.hpp" />
   </ItemGroup>
   <ItemGroup>

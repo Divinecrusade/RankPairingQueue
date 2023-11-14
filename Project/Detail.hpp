@@ -1,14 +1,11 @@
 #pragma once
 
-#include "IPriorityElement.hpp"
-
-template<std::equality_comparable Type>
-class Detail : PriorityQueue::Interfaces::IPriorityElement<Type>
+class Detail
 {
 public:
 
     Detail() = delete;
-    Detail(Type const& id, unsigned priority);
+    Detail(int id, unsigned priority);
     Detail(Detail const&) = delete;
     Detail(Detail&&) = delete;
 
@@ -17,12 +14,12 @@ public:
 
     virtual ~Detail() = default;
 
-    virtual unsigned get_priority() const = 0;
-    virtual void set_priority(int new_priority) = 0;
-    virtual Type const& get_data() const = 0;
+    virtual unsigned get_priority() const;
+    virtual void set_priority(unsigned new_priority);
+    virtual int get_id() const;
 
 private:
     
-    Type id;
+    int id;
     unsigned priority;
 };
