@@ -135,6 +135,9 @@
     <ClInclude Include="RankPairingQueue.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Detail.cpp" />
+    <ClCompile Include="ForwardList.cpp" />
+    <ClCompile Include="RankedBinaryTree.cpp" />
     <ClCompile Include="TestForwardList.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
