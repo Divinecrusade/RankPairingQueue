@@ -26,6 +26,7 @@ PriorityQueue::Auxiliry::RankedBinaryTree* PriorityQueue::Auxiliry::RankedBinary
 
 void PriorityQueue::Auxiliry::RankedBinaryTree::bind_left(RankedBinaryTree* root) noexcept
 {
+    assert(root);
     assert(!root->parent);
     assert(!left);
 
@@ -35,6 +36,7 @@ void PriorityQueue::Auxiliry::RankedBinaryTree::bind_left(RankedBinaryTree* root
 
 void PriorityQueue::Auxiliry::RankedBinaryTree::bind_right(RankedBinaryTree* root) noexcept
 {
+    assert(root);
     assert(!root->parent);
     assert(!right);
 
@@ -48,6 +50,8 @@ void PriorityQueue::Auxiliry::RankedBinaryTree::remove() noexcept
     {
         get_parent_ptr_on_me() = nullptr;
     }
+    if (left) left->parent = nullptr;
+    if (right) right->parent = nullptr;
 }
 
 unsigned PriorityQueue::Auxiliry::RankedBinaryTree::get_rank() const noexcept
@@ -65,6 +69,11 @@ void PriorityQueue::Auxiliry::RankedBinaryTree::update_rank() noexcept
 
         rank = std::max(left_rank, right_rank) + ((std::max(left_rank, right_rank) - std::min(left_rank, right_rank) <= 1U) ? 1U : 0U);
     }
+}
+
+PriorityQueue::Auxiliry::ForwardList*& PriorityQueue::Auxiliry::RankedBinaryTree::get_data() noexcept
+{
+    return data;
 }
 
 PriorityQueue::Auxiliry::RankedBinaryTree*& PriorityQueue::Auxiliry::RankedBinaryTree::get_parent_ptr_on_me() noexcept
