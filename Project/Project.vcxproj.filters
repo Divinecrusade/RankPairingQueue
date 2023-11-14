@@ -27,9 +27,6 @@
     <ClInclude Include="IPriorityQueue.hpp">
       <Filter>Файлы заголовков\interfaces</Filter>
     </ClInclude>
-    <ClInclude Include="IBinaryHalfTree.hpp">
-      <Filter>Файлы заголовков\interfaces</Filter>
-    </ClInclude>
     <ClInclude Include="IPriorityElement.hpp">
       <Filter>Файлы заголовков\interfaces</Filter>
     </ClInclude>
@@ -45,8 +42,11 @@
     <ClInclude Include="Detail.hpp">
       <Filter>Файлы заголовков\main</Filter>
     </ClInclude>
-    <ClInclude Include="BinaryHalfTree.hpp">
+    <ClInclude Include="RankedBinaryTree.hpp">
       <Filter>Файлы заголовков\auxiliry</Filter>
+    </ClInclude>
+    <ClInclude Include="RankedBinaryHalfTreeRoot.hpp">
+      <Filter>Файлы заголовков\main</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

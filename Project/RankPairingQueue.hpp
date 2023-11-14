@@ -1,7 +1,7 @@
 #pragma once
 
 #include "IPriorityQueue.hpp"
-#include "BinaryHalfTree.hpp"
+
 #include "ForwardList.hpp"
 
 namespace PriorityQueue
@@ -28,6 +28,6 @@ namespace PriorityQueue
 
     private:
         
-        Auxiliry::ForwardList<Auxiliry::BinaryHalfTree<Type>>* heap;
+        //Auxiliry::ForwardList<Auxiliry::BinaryHalfTree<Type>>* heap;
     };
 }

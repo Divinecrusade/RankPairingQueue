@@ -128,10 +128,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="BinaryHalfTree.hpp" />
+    <ClInclude Include="RankedBinaryHalfTreeRoot.hpp" />
+    <ClInclude Include="RankedBinaryTree.hpp" />
     <ClInclude Include="Detail.hpp" />
     <ClInclude Include="ForwardList.hpp" />
-    <ClInclude Include="IBinaryHalfTree.hpp" />
     <ClInclude Include="IList.hpp" />
     <ClInclude Include="IPriorityElement.hpp" />
     <ClInclude Include="IPriorityQueue.hpp" />
