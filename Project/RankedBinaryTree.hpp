@@ -1,22 +1,20 @@
 #pragma once
 
 #include "ForwardList.hpp"
-#include "IPriorityElement.hpp"
 #include <cassert>
 
 namespace PriorityQueue
 {
     namespace Auxiliry
     {
-        template<class ElType>
         class RankedBinaryTree
         {
         public:
         
             RankedBinaryTree() = delete;
-            RankedBinaryTree(ElType const& element) : data{ new ForwardList<ElType>{ } }
+            RankedBinaryTree(int id, unsigned priority) : data{ new ForwardList{ } }
             {
-                data->insert_front(element);
+                data->insert_front(id, priority);
             }
             RankedBinaryTree(RankedBinaryTree const&) = delete;
             RankedBinaryTree(RankedBinaryTree&&) = delete;
@@ -34,16 +32,16 @@ namespace PriorityQueue
             }
 
 
-            RankedBinaryTree<ElType>* get_left() noexcept
+            RankedBinaryTree* get_left() noexcept
             {
                 return left;
             }
-            RankedBinaryTree<ElType>* get_right() noexcept
+            RankedBinaryTree* get_right() noexcept
             {
                 return right;
             }
 
-            void bind_left(RankedBinaryTree<ElType>* root) noexcept
+            void bind_left(RankedBinaryTree* root) noexcept
             {
                 assert(!root->parent);
                 assert(!left);
@@ -51,7 +49,7 @@ namespace PriorityQueue
                 left = root;
                 root->parent = this;
             }
-            void bind_right(RankedBinaryTree<ElType>* root) noexcept
+            void bind_right(RankedBinaryTree* root) noexcept
             {
                 assert(!root->parent);
                 assert(!right);
@@ -86,7 +84,7 @@ namespace PriorityQueue
 
         private:
 
-            RankedBinaryTree<ElType>*& get_parent_ptr_on_me() noexcept
+            RankedBinaryTree*& get_parent_ptr_on_me() noexcept
             {
                 assert(parent);
                 assert(parent->left == this || parent->right == this);
@@ -103,12 +101,12 @@ namespace PriorityQueue
 
         private:
 
-            RankedBinaryTree<ElType>* left{ nullptr };
-            RankedBinaryTree<ElType>* right{ nullptr };
-            RankedBinaryTree<ElType>* parent{ nullptr };
+            RankedBinaryTree* left{ nullptr };
+            RankedBinaryTree* right{ nullptr };
+            RankedBinaryTree* parent{ nullptr };
             unsigned rank{ 0U };
 
-            Interfaces::IList<ElType>* data{ nullptr };
+            ForwardList* data{ nullptr };
         };
     }
 }

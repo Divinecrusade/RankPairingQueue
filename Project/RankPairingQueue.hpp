@@ -1,13 +1,11 @@
 #pragma once
 
-#include "IPriorityQueue.hpp"
-
+#include "Detail.hpp"
 #include "ForwardList.hpp"
 
 namespace PriorityQueue
 {
-    template<std::equality_comparable Type>
-    class RankPairingQueue : public Interfaces::IPriorityQueue<Type>
+    class RankPairingQueue
     {
     public:
         
@@ -20,11 +18,11 @@ namespace PriorityQueue
 
         virtual ~RankPairingQueue();
 
-        virtual void insert(Interfaces::IPriorityElement<Type> const* element) = 0;
-        virtual Interfaces::IPriorityElement<Type> const* minimum() const = 0;
-        virtual Interfaces::IPriorityElement<Type>* extract_min() = 0;
-        virtual void decrease_key(Type const& data, unsigned priority) = 0;
-        virtual void meld(Interfaces::IPriorityQueue* pq) = 0;
+        virtual void insert(Detail const* element) = 0;
+        virtual Detail const* minimum() const = 0;
+        virtual Detail* extract_min() = 0;
+        virtual void decrease_key(int data, unsigned priority) = 0;
+        virtual void meld(RankPairingQueue* rpq) = 0;
 
     private:
         
