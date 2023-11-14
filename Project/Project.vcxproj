@@ -138,7 +138,10 @@
     <ClInclude Include="RankPairingQueue.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="TestForwardList.cpp" />
+    <ClCompile Include="TestForwardList.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="TestRankedBinaryTree.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
