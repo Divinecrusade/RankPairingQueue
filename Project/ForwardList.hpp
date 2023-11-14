@@ -57,6 +57,7 @@ namespace PriorityQueue
             void insert_back(Detail const& some_detail);
             Detail& get(size_t pos);
             void remove(size_t pos);
+            bool is_empty() const noexcept;
 
         private:
 
