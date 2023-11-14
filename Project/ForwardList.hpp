@@ -4,6 +4,7 @@
 
 #include <stdexcept>
 #include <string>
+#include <cassert>
 
 
 namespace PriorityQueue
@@ -38,7 +39,7 @@ namespace PriorityQueue
             ForwardList& operator=(ForwardList const&) = delete;
             ForwardList& operator=(ForwardList&&) = delete;
 
-            virtual ~ForwardList()
+            ~ForwardList()
             {
                 Node* tmp{ first->next };
                 while (first != last)
@@ -51,102 +52,11 @@ namespace PriorityQueue
                 first = last = nullptr;
             }
 
-            virtual void insert(int id, unsigned priority, size_t pos = 0U)
-            {
-                Node* new_node{ new Node{ Detail{ id, priority } } };
-                Node* prev{ nullptr };
-                Node* cur{ first };
-
-                while (cur != nullptr && pos != 0U)
-                {
-                    prev = cur;
-                    cur = cur->next;
-                    --pos;
-                }
-                if (pos != 0U && cur == nullptr) throw OutOfRange{ "List is shorter than reqiured index" };
-
-                if (first == nullptr)
-                {
-                    first = last = new_node;
-                }
-                else
-                {
-                    new_node->next = prev->next;
-                    prev->next = new_node;
-
-                    if (last == cur) last = new_node;
-                }
-            }
-            virtual void insert_front(int id, unsigned priority)
-            {
-                Node* new_node{ new Node{ Detail{id, priority} } };
-                
-                if (first == nullptr) first = last = new_node;
-                else
-                {
-                    new_node->next = first;
-                    first = new_node;
-                }
-            }
-            virtual void insert_back(int id, unsigned priority)
-            {
-                Node* new_node{ new Node{ Detail{id, priority} } };
-
-                if (last == nullptr) last = first = new_node;
-                else
-                {
-                    last->next = new_node;
-                    last = new_node;
-                }
-            }
-            virtual Detail& get(size_t pos)
-            {
-                Node* cur{ first };
-
-                while (cur != nullptr && pos != 0U)
-                {
-                    cur = cur->next;
-                    --pos;
-                }
-                if (pos != 0U && cur == nullptr) throw OutOfRange{ "List is shorter than reqiured index" };
-
-                return cur->element;
-            }
-            virtual void remove(size_t pos)
-            {
-                Node* prev{ nullptr };
-                Node* cur{ first };
-
-                while (cur != nullptr && pos != 0U)
-                {
-                    prev = cur;
-                    cur = cur->next;
-                    --pos;
-                }
-                if (pos != 0U && cur == nullptr) throw OutOfRange{ "List is shorter than reqiured index" };
-
-                if (first == last)
-                {
-                    first = last = nullptr;
-                }
-                else if (cur == first)
-                {
-                    first = first->next;
-                }
-                else
-                {
-                    prev->next = cur->next;
-
-                    cur->next = nullptr;
-
-                    if (cur == last)
-                    {
-                        last = prev;
-                    }
-                }
-
-                delete cur;
-            }
+            void insert(Detail const& some_detail, size_t pos = 0U);
+            void insert_front(Detail const& some_detail);
+            void insert_back(Detail const& some_detail);
+            Detail& get(size_t pos);
+            void remove(size_t pos);
 
         private:
 
