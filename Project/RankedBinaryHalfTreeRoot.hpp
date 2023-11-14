@@ -1,18 +1,19 @@
 #pragma once
 
-#include "IPriorityElement.hpp"
 #include "ForwardList.hpp"
 #include "RankedBinaryTree.hpp"
 
 namespace PriorityQueue
 {
-    template<std::equality_comparable Type>
     class RankedBinaryHalfTreeRoot
     {
     public:
 
         RankedBinaryHalfTreeRoot() = delete;
-        RankedBinaryHalfTreeRoot(Interfaces::IPriorityElement<Type>* element);
+        RankedBinaryHalfTreeRoot(int id, unsigned priority) : minimum{ new Auxiliry::ForwardList{} }
+        {
+            minimum->insert_back(id, priority);
+        }
         RankedBinaryHalfTreeRoot(RankedBinaryHalfTreeRoot const&) = delete;
         RankedBinaryHalfTreeRoot(RankedBinaryHalfTreeRoot&&) = delete;
 
@@ -20,7 +21,7 @@ namespace PriorityQueue
         RankedBinaryHalfTreeRoot& operator=(RankedBinaryHalfTreeRoot&&) = delete;
 
 
-        void meld(RankedBinaryHalfTreeRoot<Type>* root) noexcept;
+        void meld(RankedBinaryHalfTreeRoot* root) noexcept { }
         
         unsigned get_rank() const noexcept
         {
@@ -28,20 +29,18 @@ namespace PriorityQueue
         }
         void update_rank() noexcept
         {
-            rank = tree.get_rank() + 1U;
+            rank = tree->get_rank() + 1U;
         }
 
-        Interfaces::IPriorityElement<Type>* get_minimum() noexcept
+        Detail const& get_minimum() const noexcept
         {
             return minimum->get(0U);
         }
 
-        Interfaces::IList<RankedBinaryHalfTreeRoot<Type>*>* extract() noexcept;
-
     private:
 
         unsigned rank{ 0U };
-        Auxiliry::RankedBinaryTree<Type> tree;
-        Interfaces::IList<Interfaces::IPriorityElement<Type>*>* minimum;
+        Auxiliry::RankedBinaryTree* tree{ nullptr };
+        Auxiliry::ForwardList* minimum;
     };
 }

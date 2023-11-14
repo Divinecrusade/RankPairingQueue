@@ -1,22 +1,22 @@
 #pragma once
 
-#include "IList.hpp"
+#include "Detail.hpp"
+
 #include <stdexcept>
 #include <string>
+
 
 namespace PriorityQueue
 {
     namespace Auxiliry
     {
-        template<class ElType>
-        class ForwardList : public Interfaces::IList<ElType>
+        class ForwardList
         {
         private:
 
-            template<class ElType>
             struct Node
             {
-                ElType element;
+                Detail element;
                 Node* next{ nullptr };
             };
 
@@ -40,7 +40,7 @@ namespace PriorityQueue
 
             virtual ~ForwardList()
             {
-                Node<ElType>* tmp{ first->next };
+                Node* tmp{ first->next };
                 while (first != last)
                 {
                     delete first;
@@ -51,11 +51,11 @@ namespace PriorityQueue
                 first = last = nullptr;
             }
 
-            virtual void insert(ElType const& element, size_t pos = 0U)
+            virtual void insert(int id, unsigned priority, size_t pos = 0U)
             {
-                Node<ElType>* new_node{ new Node{element} };
-                Node<ElType>* prev{ nullptr };
-                Node<ElType>* cur{ first };
+                Node* new_node{ new Node{ Detail{ id, priority } } };
+                Node* prev{ nullptr };
+                Node* cur{ first };
 
                 while (cur != nullptr && pos != 0U)
                 {
@@ -77,9 +77,9 @@ namespace PriorityQueue
                     if (last == cur) last = new_node;
                 }
             }
-            virtual void insert_front(ElType const& element)
+            virtual void insert_front(int id, unsigned priority)
             {
-                Node<ElType>* new_node{ new Node{element} };
+                Node* new_node{ new Node{ Detail{id, priority} } };
                 
                 if (first == nullptr) first = last = new_node;
                 else
@@ -88,9 +88,9 @@ namespace PriorityQueue
                     first = new_node;
                 }
             }
-            virtual void insert_back(ElType const& element)
+            virtual void insert_back(int id, unsigned priority)
             {
-                Node<ElType>* new_node{ new Node<ElType>{element, nullptr} };
+                Node* new_node{ new Node{ Detail{id, priority} } };
 
                 if (last == nullptr) last = first = new_node;
                 else
@@ -99,9 +99,9 @@ namespace PriorityQueue
                     last = new_node;
                 }
             }
-            virtual ElType& get(size_t pos)
+            virtual Detail& get(size_t pos)
             {
-                Node<ElType>* cur{ first };
+                Node* cur{ first };
 
                 while (cur != nullptr && pos != 0U)
                 {
@@ -114,8 +114,8 @@ namespace PriorityQueue
             }
             virtual void remove(size_t pos)
             {
-                Node<ElType>* prev{ nullptr };
-                Node<ElType>* cur{ first };
+                Node* prev{ nullptr };
+                Node* cur{ first };
 
                 while (cur != nullptr && pos != 0U)
                 {
@@ -150,8 +150,8 @@ namespace PriorityQueue
 
         private:
 
-            Node<ElType>* first{ nullptr };
-            Node<ElType>* last { nullptr };
+            Node* first{ nullptr };
+            Node* last { nullptr };
         };
     }
 }
