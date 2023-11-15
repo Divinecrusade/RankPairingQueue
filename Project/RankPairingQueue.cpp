@@ -21,11 +21,13 @@ Detail const& PriorityQueue::RankPairingQueue::minimum() const
 void PriorityQueue::RankPairingQueue::extract_min()
 {
     auto new_roots{ heap.get_first()->remove_minimum() };
-    if (new_roots.empty()) return;
-
-    for (auto& new_root : new_roots)
+    if (heap.get_first()->is_empty()) heap.remove_first();
+    if (!new_roots.empty())
     {
-        heap.insert_root(new_root);
+        for (auto& new_root : new_roots)
+        {
+            heap.insert_root(new_root);
+        }
+        heap.unite_roots_with_same_ranks();
     }
-    heap.unite_roots_with_same_ranks();
 }

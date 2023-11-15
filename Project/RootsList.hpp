@@ -30,6 +30,8 @@ namespace PriorityQueue
             void set_first(Detail const& some_detail) noexcept;
             void set_second(Detail const& some_detail) noexcept;
 
+            void remove_first()noexcept;
+
             void insert_root(RBHalfTreeRoot*) noexcept;
 
             RBHalfTreeRoot* get_first() const noexcept;
