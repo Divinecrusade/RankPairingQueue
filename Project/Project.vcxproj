@@ -138,13 +138,17 @@
   <ItemGroup>
     <ClCompile Include="Detail.cpp" />
     <ClCompile Include="ForwardList.cpp" />
+    <ClCompile Include="RankPairingQueue.cpp" />
     <ClCompile Include="RBHalfTreeRoot.cpp" />
     <ClCompile Include="RankedBinaryTree.cpp" />
     <ClCompile Include="RootsList.cpp" />
     <ClCompile Include="TestForwardList.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="TestRankedBinaryTree.cpp" />
+    <ClCompile Include="TestRankedBinaryTree.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Unit1.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
