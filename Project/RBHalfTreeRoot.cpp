@@ -18,8 +18,8 @@ PriorityQueue::RBHalfTreeRoot::RBHalfTreeRoot(Auxiliry::RankedBinaryTree* node) 
 void PriorityQueue::RBHalfTreeRoot::meld(RBHalfTreeRoot& root)
 {
     Auxiliry::RankedBinaryTree* new_node{ new Auxiliry::RankedBinaryTree{ root.get_minimum() } };
-    new_node->bind_left(tree);
-    new_node->bind_right(root.tree);
+    new_node->bind_right(tree);
+    new_node->bind_left(root.tree);
     tree = new_node;
     ++rank;
 }
