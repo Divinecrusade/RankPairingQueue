@@ -39,18 +39,7 @@ namespace PriorityQueue
             ForwardList& operator=(ForwardList const&) = delete;
             ForwardList& operator=(ForwardList&&) = delete;
 
-            ~ForwardList()
-            {
-                Node* tmp{ first->next };
-                while (first != last)
-                {
-                    delete first;
-                    first = tmp;
-                    tmp = first->next;
-                }
-                delete first;
-                first = last = nullptr;
-            }
+            ~ForwardList();
 
             void insert(Detail const& some_detail, size_t pos = 0U);
             void insert_front(Detail const& some_detail);
