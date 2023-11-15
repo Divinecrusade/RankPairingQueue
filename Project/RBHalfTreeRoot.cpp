@@ -46,16 +46,20 @@ std::vector<PriorityQueue::RBHalfTreeRoot*> PriorityQueue::RBHalfTreeRoot::remov
     std::vector<PriorityQueue::RBHalfTreeRoot*> new_roots{ };
     Auxiliry::RankedBinaryTree* subtree{ tree };
     Auxiliry::RankedBinaryTree* right_subtree{ nullptr };
-    do
+    while (subtree)
     {
-        right_subtree = subtree->get_right();
+        right_subtree = subtree->unbind_right();
         new_roots.push_back(new RBHalfTreeRoot{ subtree });
         subtree = right_subtree;
-    } while (subtree);
-
+    }
 
     delete tree;
     tree = nullptr;
     delete minimum;
     minimum = nullptr;
+}
+
+bool PriorityQueue::RBHalfTreeRoot::is_empty() const noexcept
+{
+    return minimum == nullptr;
 }

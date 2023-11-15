@@ -32,6 +32,8 @@ namespace PriorityQueue
             unsigned get_rank() const noexcept;
             void update_rank() noexcept;
 
+            RankedBinaryTree* unbind_right() noexcept;
+
             ForwardList*& get_data() noexcept;
 
         private:

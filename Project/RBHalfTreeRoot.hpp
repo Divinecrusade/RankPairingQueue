@@ -29,6 +29,8 @@ namespace PriorityQueue
 
         std::vector<PriorityQueue::RBHalfTreeRoot*> remove_minimum();
 
+        bool is_empty() const noexcept;
+
     private:
 
         RBHalfTreeRoot(Auxiliry::RankedBinaryTree* node);

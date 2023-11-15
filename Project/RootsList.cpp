@@ -31,6 +31,14 @@ void PriorityQueue::Auxiliry::RootsList::set_second(Detail const& some_detail) n
     first->next = new_node;
 }
 
+void PriorityQueue::Auxiliry::RootsList::remove_first() noexcept
+{
+    if (!first) return;
+    Node* tmp{ first };
+    first = first->next;
+    delete tmp;
+}
+
 void PriorityQueue::Auxiliry::RootsList::insert_root(RBHalfTreeRoot* new_root) noexcept
 {
     if (first == nullptr) first = new Node{ new_root };
@@ -75,11 +83,12 @@ void PriorityQueue::Auxiliry::RootsList::unite_roots_with_same_ranks()
         {
             if (cur->root->get_rank() == fixed->root->get_rank())
             {
-                unite(prev_cur, cur, fixed, prev_fixed);
+                unite(prev_fixed, fixed, prev_cur, cur);
 
                 fixed = first;
                 break;
             }
+            prev_cur = cur;
             cur = cur->next;
         }
         prev_fixed = fixed;
@@ -106,22 +115,25 @@ void PriorityQueue::Auxiliry::RootsList::set_second(Node* new_node) noexcept
     first->next = new_node;
 }
 
-void PriorityQueue::Auxiliry::RootsList::unite(Node* prev1, Node* node1, Node* node2, Node* prev2)
+void PriorityQueue::Auxiliry::RootsList::unite(Node* prev1, Node* node1, Node* prev2, Node* node2)
 {
+    assert(node1 && node2);
     assert(node1->root->get_rank() == node2->root->get_rank());
 
     if (node1->root->get_minimum().get_priority() < node2->root->get_minimum().get_priority())
     {
         node1->root->meld(*node2->root);
         if (first == node2) first = node2->next;
-        else prev2->next = node2->next;
+        prev2->next = node2->next;
+        node2->next = nullptr;
         delete node2;
     }
     else
     {
         node2->root->meld(*node1->root);
         if (first == node1) first = node1->next;
-        else prev1->next = node1->next;
+        prev1->next = node1->next;
+        node1->next = nullptr;
         delete node1;
     }
 }
