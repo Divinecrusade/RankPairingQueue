@@ -26,22 +26,18 @@ PriorityQueue::Auxiliry::RankedBinaryTree* PriorityQueue::Auxiliry::RankedBinary
 
 void PriorityQueue::Auxiliry::RankedBinaryTree::bind_left(RankedBinaryTree* root) noexcept
 {
-    assert(root);
-    assert(!root->parent);
     assert(!left);
 
     left = root;
-    root->parent = this;
+    if (root) root->parent = this;
 }
 
 void PriorityQueue::Auxiliry::RankedBinaryTree::bind_right(RankedBinaryTree* root) noexcept
 {
-    assert(root);
-    assert(!root->parent);
     assert(!right);
 
     right = root;
-    root->parent = this;
+    if (root) root->parent = this;
 }
 
 void PriorityQueue::Auxiliry::RankedBinaryTree::remove() noexcept

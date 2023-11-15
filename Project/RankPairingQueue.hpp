@@ -2,6 +2,7 @@
 
 #include "Detail.hpp"
 #include "ForwardList.hpp"
+#include "RootsList.hpp"
 
 namespace PriorityQueue
 {
@@ -16,16 +17,15 @@ namespace PriorityQueue
         RankPairingQueue& operator=(RankPairingQueue const&) = delete;
         RankPairingQueue& operator=(RankPairingQueue&&) = delete;
 
-        virtual ~RankPairingQueue();
+        ~RankPairingQueue() = default;
 
-        virtual void insert(Detail const* element) = 0;
-        virtual Detail const* minimum() const = 0;
-        virtual Detail* extract_min() = 0;
-        virtual void decrease_key(int data, unsigned priority) = 0;
-        virtual void meld(RankPairingQueue* rpq) = 0;
+        void insert(Detail const& element);
+        Detail const& minimum() const;
+        void extract_min();
+//        void decrease_key(int data, unsigned priority);
 
     private:
         
-        //Auxiliry::ForwardList<Auxiliry::BinaryHalfTree<Type>>* heap;
+        Auxiliry::RootsList heap{};
     };
 }
