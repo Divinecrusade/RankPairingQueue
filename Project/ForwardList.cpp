@@ -1,5 +1,20 @@
 #include "ForwardList.hpp"
 
+PriorityQueue::Auxiliry::ForwardList::~ForwardList()
+{
+    if (!first) return;
+
+    Node* tmp{ first->next };
+    while (first != last)
+    {
+        delete first;
+        first = tmp;
+        tmp = first->next;
+    }
+    delete first;
+    first = last = nullptr;
+}
+
 void PriorityQueue::Auxiliry::ForwardList::insert(Detail const& some_detail, size_t pos)
 {
     Node* new_node{ new Node{ some_detail } };

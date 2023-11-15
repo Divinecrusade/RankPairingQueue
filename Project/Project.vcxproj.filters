@@ -39,6 +39,9 @@
     <ClInclude Include="RBHalfTreeRoot.hpp">
       <Filter>Файлы заголовков\main</Filter>
     </ClInclude>
+    <ClInclude Include="RootsList.hpp">
+      <Filter>Файлы заголовков\auxiliry</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TestForwardList.cpp">
@@ -57,6 +60,9 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="RBHalfTreeRoot.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="RootsList.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

@@ -128,6 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="RootsList.hpp" />
     <ClInclude Include="RBHalfTreeRoot.hpp" />
     <ClInclude Include="RankedBinaryTree.hpp" />
     <ClInclude Include="Detail.hpp" />
@@ -139,6 +140,7 @@
     <ClCompile Include="ForwardList.cpp" />
     <ClCompile Include="RBHalfTreeRoot.cpp" />
     <ClCompile Include="RankedBinaryTree.cpp" />
+    <ClCompile Include="RootsList.cpp" />
     <ClCompile Include="TestForwardList.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
