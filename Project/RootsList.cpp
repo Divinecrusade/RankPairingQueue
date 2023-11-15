@@ -77,7 +77,7 @@ void PriorityQueue::Auxiliry::RootsList::unite_roots_with_same_ranks()
 
     while (fixed)
     {
-        Node* cur{ fixed->next };
+M0:     Node* cur{ fixed->next };
         Node* prev_cur{ fixed };
         while (cur)
         {
@@ -85,8 +85,10 @@ void PriorityQueue::Auxiliry::RootsList::unite_roots_with_same_ranks()
             {
                 unite(prev_fixed, fixed, prev_cur, cur);
 
+                prev_fixed = nullptr;
                 fixed = first;
-                break;
+                
+                goto M0;
             }
             prev_cur = cur;
             cur = cur->next;
