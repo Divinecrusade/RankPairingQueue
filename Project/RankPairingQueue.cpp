@@ -26,6 +26,7 @@ void PriorityQueue::RankPairingQueue::extract_min()
     {
         for (auto& new_root : new_roots)
         {
+            new_root->update_rank();
             heap.insert_root(new_root);
         }
         heap.unite_roots_with_same_ranks();

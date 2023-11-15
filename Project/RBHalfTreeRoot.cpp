@@ -31,6 +31,7 @@ unsigned PriorityQueue::RBHalfTreeRoot::get_rank() const noexcept
 
 void PriorityQueue::RBHalfTreeRoot::update_rank() noexcept
 {
+    rank = (tree != nullptr ? (tree->update_rank(), tree->get_rank()) + 1U : 0U);
 }
 
 Detail const& PriorityQueue::RBHalfTreeRoot::get_minimum() const noexcept
@@ -53,13 +54,12 @@ std::vector<PriorityQueue::RBHalfTreeRoot*> PriorityQueue::RBHalfTreeRoot::remov
         subtree = right_subtree;
     }
 
-    delete tree;
     tree = nullptr;
-    delete minimum;
-    minimum = nullptr;
+
+    return new_roots;
 }
 
 bool PriorityQueue::RBHalfTreeRoot::is_empty() const noexcept
 {
-    return minimum == nullptr;
+    return minimum->is_empty();
 }

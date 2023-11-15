@@ -45,7 +45,7 @@ void PriorityQueue::Auxiliry::RootsList::insert_root(RBHalfTreeRoot* new_root) n
     else
     if (new_root->get_minimum().get_priority() < first->root->get_minimum().get_priority())
     {
-        first = new Node{ new_root, first->next };
+        first = new Node{ new_root, first };
     }
     else
     {

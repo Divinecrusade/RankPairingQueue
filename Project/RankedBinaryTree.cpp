@@ -68,7 +68,7 @@ PriorityQueue::Auxiliry::RankedBinaryTree* PriorityQueue::Auxiliry::RankedBinary
     RankedBinaryTree* tmp{ right };
     if (right) right->parent = nullptr;
     right = nullptr;
-    return right;
+    return tmp;
 }
 
 PriorityQueue::Auxiliry::ForwardList*& PriorityQueue::Auxiliry::RankedBinaryTree::get_data() noexcept
