@@ -4,12 +4,12 @@ PriorityQueue::Auxiliry::ForwardList::~ForwardList()
 {
     if (!first) return;
 
-    Node* tmp{ first->next };
+    Node* tmp{ nullptr };
     while (first != last)
     {
+        tmp = first->next;
         delete first;
         first = tmp;
-        tmp = first->next;
     }
     delete first;
     first = last = nullptr;

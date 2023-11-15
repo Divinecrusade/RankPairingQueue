@@ -15,7 +15,7 @@ PriorityQueue::RBHalfTreeRoot::RBHalfTreeRoot(Auxiliry::RankedBinaryTree* node) 
 
     node->remove();
 }
-void PriorityQueue::RBHalfTreeRoot::meld(RBHalfTreeRoot& root) noexcept
+void PriorityQueue::RBHalfTreeRoot::meld(RBHalfTreeRoot& root)
 {
     Auxiliry::RankedBinaryTree* new_node{ new Auxiliry::RankedBinaryTree{ root.get_minimum() } };
     new_node->bind_left(tree);
