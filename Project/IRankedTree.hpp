@@ -1,19 +1,23 @@
 #pragma once
 
 #include "IPriorityElement.hpp"
+#include "IRankedRootsList.hpp"
 
 namespace PriorityQueue
 {
-    namespace Interfaces
+    namespace Abstract
     {
-        __interface IRankedTree
+        namespace Interfaces
         {
-            virtual unsigned get_rank() const noexcept = 0;
+            __interface IRankedTree
+            {
+            public:
 
-            virtual IPriorityElement const& get_data() const noexcept = 0;
-            virtual IPriorityElement& get_data() noexcept = 0;
+                virtual unsigned get_rank() const noexcept = 0;
 
-            virtual void meld(IRankedTree& tree) = 0;
-        };
+                virtual IPriorityElement const& get_data() const noexcept = 0;
+                virtual IPriorityElement& get_data() noexcept = 0;
+            };
+        }
     }
 }
