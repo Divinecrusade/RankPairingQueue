@@ -1,7 +1,6 @@
 #pragma once
 
-#include "IRankedBinaryTree.hpp"
-
+#include "IRankedTree.hpp"
 
 namespace PriorityQueue
 {
@@ -11,15 +10,15 @@ namespace PriorityQueue
         {
         public:
 
-            virtual void set_first(Interfaces::IRankedBinaryTree const& root) = 0;
-            virtual void set_second(Interfaces::IRankedBinaryTree const& root) = 0;
+            virtual void set_first(Interfaces::IRankedTree* root) = 0;
+            virtual void set_second(Interfaces::IRankedTree* root) = 0;
 
-            virtual Interfaces::IRankedBinaryTree const& get_first() const noexcept = 0;
-            virtual void remove_first() = 0;
+            virtual Interfaces::IRankedTree const& get_first() const noexcept = 0;
+            virtual Interfaces::IRankedTree* remove_first() noexcept = 0;
 
             virtual bool is_empty() const noexcept;
 
-            virtual void unite_trees_with_same_ranks() = 0;
+            virtual void unite_trees_with_same_rank() = 0;
         };
     }
 }
