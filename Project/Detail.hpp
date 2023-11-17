@@ -2,27 +2,28 @@
 
 #include "IPriorityElement.hpp"
 
-template<std::equality_comparable Type>
-class Detail : PriorityQueue::Interfaces::IPriorityElement<Type>
+namespace PriorityQueue
 {
-public:
-
-    Detail() = delete;
-    Detail(Type const& id, unsigned priority);
-    Detail(Detail const&) = delete;
-    Detail(Detail&&) = delete;
-
-    Detail& operator=(Detail const&) = delete;
-    Detail& operator=(Detail&&) = delete;
-
-    virtual ~Detail() = default;
-
-    virtual unsigned get_priority() const = 0;
-    virtual void set_priority(int new_priority) = 0;
-    virtual Type const& get_data() const = 0;
-
-private:
+    class Detail : public Interfaces::IPriorityElement
+    {
+    public:
     
-    Type id;
-    unsigned priority;
-};
+        Detail(int id, unsigned priority);
+        Detail(Detail const& some_detail);
+        Detail(Detail&&) = delete;
+
+        Detail& operator=(Detail const&) = delete;
+        Detail& operator=(Detail&&) = delete;
+
+        virtual ~Detail() = default;
+
+        virtual unsigned get_priority() const override;
+        virtual void set_priority(int new_priority) override;
+        virtual int get_id() const override;
+
+    private:
+
+        int const id;
+        unsigned priority;
+    };
+}
