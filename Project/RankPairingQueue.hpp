@@ -16,15 +16,15 @@ namespace PriorityQueue
         RankPairingQueue& operator=(RankPairingQueue const&) = delete;
         RankPairingQueue& operator=(RankPairingQueue&&) = delete;
 
-        virtual ~RankPairingQueue();
+        virtual ~RankPairingQueue() = default;
 
-        virtual void insert(Interfaces::IPriorityElement const& element) = 0;
-        virtual Interfaces::IPriorityElement const& minimum() const = 0;
-        virtual void extract_min() = 0;
+        virtual void insert(Interfaces::IPriorityElement& element) override;
+        virtual Interfaces::IPriorityElement const& minimum() const override;
+        virtual void extract_min() override;
         //virtual void decrease_key(Type const& data, unsigned priority) = 0;
 
     private:
         
-        Interfaces::IRankedRootsList* heap;
+        Interfaces::IRankedRootsList& heap;
     };
 }

@@ -1,6 +1,5 @@
 #pragma once
 
-#include "IPriorityElement.hpp"
 #include "IRankedRootsList.hpp"
 
 namespace PriorityQueue
@@ -11,16 +10,12 @@ namespace PriorityQueue
         {
         public:
 
-            virtual void meld(IRankedBinaryTree& another_root) = 0;
-
-            virtual unsigned get_rank() const noexcept = 0;
-            virtual void update_rank() noexcept = 0;
-
-            virtual IPriorityElement const& get_minimum() const noexcept = 0;
-
             virtual IRankedRootsList& remove() = 0;
 
-            virtual bool is_empty() const noexcept = 0;
+            virtual bool is_root() const noexcept = 0;
+
+            //virtual void bind_left(IRankedBinaryTree& another_root) = 0;
+            //virtual void bind_right(IRankedBinaryTree& another_root) = 0;
         };
     }
 }

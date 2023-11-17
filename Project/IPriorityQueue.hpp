@@ -10,7 +10,7 @@ namespace PriorityQueue
         {
         public:
 
-            virtual void insert(IPriorityElement const& element) = 0;
+            virtual void insert(IPriorityElement& element) = 0;
             virtual IPriorityElement const& minimum() const = 0;
             virtual void extract_min() = 0;
             //virtual void decrease_key(Type const& data, unsigned priority) = 0;
