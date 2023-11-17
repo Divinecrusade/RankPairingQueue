@@ -9,7 +9,7 @@ unsigned PriorityQueue::Detail::get_priority() const
     return priority;
 }
 
-void PriorityQueue::Detail::set_priority(int new_priority)
+void PriorityQueue::Detail::set_priority(unsigned new_priority)
 {
     assert(new_priority < priority);
 

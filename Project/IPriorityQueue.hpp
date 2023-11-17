@@ -4,16 +4,19 @@
 
 namespace PriorityQueue
 {
-    namespace Interfaces
+    namespace Abstract
     {
-        __interface IPriorityQueue
+        namespace Interfaces
         {
-        public:
+            __interface IPriorityQueue
+            {
+            public:
 
-            virtual void insert(IPriorityElement& element) = 0;
-            virtual IPriorityElement const& minimum() const = 0;
-            virtual void extract_min() = 0;
-            //virtual void decrease_key(Type const& data, unsigned priority) = 0;
-        };
+                virtual void insert(IPriorityElement& element) = 0;
+                virtual IPriorityElement const& minimum() const = 0;
+                virtual void extract_min() = 0;
+                //virtual void decrease_key(Type const& data, unsigned priority) = 0;
+            };
+        }
     }
 }

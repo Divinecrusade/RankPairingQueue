@@ -1,24 +1,28 @@
 #pragma once
 
-#include "IRankedTree.hpp"
 
 namespace PriorityQueue
 {
-    namespace Interfaces
+    namespace Abstract
     {
-        __interface IRankedRootsList
+        class MeldableRankedBinaryTree;
+
+        namespace Interfaces
         {
-        public:
+            __interface IRankedRootsList
+            {
+            public:
 
-            virtual void set_first(Interfaces::IRankedTree* root) = 0;
-            virtual void set_second(Interfaces::IRankedTree* root) = 0;
+                virtual void set_first(MeldableRankedBinaryTree* root) = 0;
+                virtual void set_second(MeldableRankedBinaryTree* root) = 0;
 
-            virtual Interfaces::IRankedTree const& get_first() const noexcept = 0;
-            virtual Interfaces::IRankedTree* remove_first() noexcept = 0;
+                virtual MeldableRankedBinaryTree const& get_first() const noexcept = 0;
+                virtual MeldableRankedBinaryTree* remove_first() noexcept = 0;
 
-            virtual bool is_empty() const noexcept;
+                virtual bool is_empty() const noexcept;
 
-            virtual void unite_trees_with_same_rank() = 0;
-        };
+                virtual void unite_trees_with_same_rank() = 0;
+            };
+        }
     }
 }
