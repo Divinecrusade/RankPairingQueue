@@ -27,20 +27,43 @@
     <ClInclude Include="IPriorityQueue.hpp">
       <Filter>Файлы заголовков\interfaces</Filter>
     </ClInclude>
-    <ClInclude Include="IBinaryHalfTree.hpp">
-      <Filter>Файлы заголовков\interfaces</Filter>
-    </ClInclude>
     <ClInclude Include="IPriorityElement.hpp">
       <Filter>Файлы заголовков\interfaces</Filter>
-    </ClInclude>
-    <ClInclude Include="IList.hpp">
-      <Filter>Файлы заголовков\interfaces</Filter>
-    </ClInclude>
-    <ClInclude Include="ForwardList.hpp">
-      <Filter>Файлы заголовков\auxiliry</Filter>
     </ClInclude>
     <ClInclude Include="RankPairingQueue.hpp">
       <Filter>Файлы заголовков\main</Filter>
     </ClInclude>
+    <ClInclude Include="Detail.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="IRankedRootsList.hpp">
+      <Filter>Файлы заголовков\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="RankedHalfBinaryTree.hpp">
+      <Filter>Файлы заголовков\auxiliry</Filter>
+    </ClInclude>
+    <ClInclude Include="RankedRootsList.hpp">
+      <Filter>Файлы заголовков\auxiliry</Filter>
+    </ClInclude>
+    <ClInclude Include="IRankedTree.hpp">
+      <Filter>Файлы заголовков\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IRankedBinaryTree.hpp">
+      <Filter>Файлы заголовков\interfaces</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Detail.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="RankedHalfBinaryTree.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="RankPairingQueue.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="RankedRootsList.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
