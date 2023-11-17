@@ -24,10 +24,10 @@ void PriorityQueue::RankPairingQueue::extract_min()
     if (heap.get_first()->is_empty()) heap.remove_first();
     if (!new_roots.empty())
     {
-        for (auto& new_root : new_roots)
+        for (auto new_root{ new_roots.rbegin()}; new_root != new_roots.rend(); ++new_root)
         {
-            new_root->update_rank();
-            heap.insert_root(new_root);
+            (*new_root)->update_rank();
+            heap.insert_root(*new_root);
         }
         heap.unite_roots_with_same_ranks();
     }
