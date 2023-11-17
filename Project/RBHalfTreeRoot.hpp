@@ -21,7 +21,7 @@ namespace PriorityQueue
         ~RBHalfTreeRoot() = default;
 
         void meld(RBHalfTreeRoot& root);
-        
+
         unsigned get_rank() const noexcept;
         void update_rank() noexcept;
 

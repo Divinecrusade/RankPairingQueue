@@ -121,12 +121,12 @@ void PriorityQueue::Auxiliry::RootsList::unite(Node* prev1, Node* node1, Node* p
 {
     assert(node1 && node2);
     assert(node1->root->get_rank() == node2->root->get_rank());
-
+    
     if (node1->root->get_minimum().get_priority() < node2->root->get_minimum().get_priority())
     {
         node1->root->meld(*node2->root);
         if (first == node2) first = node2->next;
-        prev2->next = node2->next;
+        else prev2->next = node2->next;
         node2->next = nullptr;
         delete node2;
     }
@@ -134,7 +134,7 @@ void PriorityQueue::Auxiliry::RootsList::unite(Node* prev1, Node* node1, Node* p
     {
         node2->root->meld(*node1->root);
         if (first == node1) first = node1->next;
-        prev1->next = node1->next;
+        else prev1->next = node1->next;
         node1->next = nullptr;
         delete node1;
     }
