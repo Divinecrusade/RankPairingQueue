@@ -1,11 +1,11 @@
 #pragma once
 
-#include "IRankedRootsList.hpp"
+#include "RankedRootsList.hpp"
 #include "IPriorityQueue.hpp"
 
 namespace PriorityQueue
 {
-    class RankPairingQueue : public Interfaces::IPriorityQueue
+    class RankPairingQueue : public Abstract::Interfaces::IPriorityQueue
     {
     public:
         
@@ -16,15 +16,20 @@ namespace PriorityQueue
         RankPairingQueue& operator=(RankPairingQueue const&) = delete;
         RankPairingQueue& operator=(RankPairingQueue&&) = delete;
 
-        virtual ~RankPairingQueue() = default;
+        virtual ~RankPairingQueue();
 
-        virtual void insert(Interfaces::IPriorityElement& element) override;
-        virtual Interfaces::IPriorityElement const& minimum() const override;
+        virtual void insert(Abstract::Interfaces::IPriorityElement& element) override;
+        virtual Abstract::Interfaces::IPriorityElement const& minimum() const override;
         virtual void extract_min() override;
         //virtual void decrease_key(Type const& data, unsigned priority) = 0;
 
     private:
         
-        Interfaces::IRankedRootsList& heap;
+        void push_to_heap(Abstract::MeldableRankedBinaryTree* new_root) noexcept;
+        void split_and_push_to_heap(Abstract::MeldableRankedBinaryTree* tree) noexcept;
+
+    private:
+
+        Abstract::Interfaces::IRankedRootsList* heap{ new Auxiliry::RankedRootsList{} };
     };
 }

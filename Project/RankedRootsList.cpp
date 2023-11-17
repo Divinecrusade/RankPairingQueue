@@ -1,4 +1,6 @@
 #include "RankedRootsList.hpp"
+#include "MeldableRankedBinaryTree.hpp"
+
 #include <cassert>
 
 PriorityQueue::Auxiliry::RankedRootsList::~RankedRootsList()
@@ -12,13 +14,13 @@ PriorityQueue::Auxiliry::RankedRootsList::~RankedRootsList()
     }
 }
 
-void PriorityQueue::Auxiliry::RankedRootsList::set_first(Interfaces::IRankedTree* root)
+void PriorityQueue::Auxiliry::RankedRootsList::set_first(Abstract::MeldableRankedBinaryTree* root)
 {
     Node* new_node{ new Node{ root, first } };
     first = new_node;
 }
 
-void PriorityQueue::Auxiliry::RankedRootsList::set_second(Interfaces::IRankedTree* root)
+void PriorityQueue::Auxiliry::RankedRootsList::set_second(Abstract::MeldableRankedBinaryTree* root)
 {
     assert(!is_empty());
 
@@ -26,22 +28,21 @@ void PriorityQueue::Auxiliry::RankedRootsList::set_second(Interfaces::IRankedTre
     first->next = new_node;
 }
 
-PriorityQueue::Interfaces::IRankedTree const& PriorityQueue::Auxiliry::RankedRootsList::get_first() const noexcept
+PriorityQueue::Abstract::MeldableRankedBinaryTree const& PriorityQueue::Auxiliry::RankedRootsList::get_first() const noexcept
 {
     assert(!is_empty());
 
     return *first->root;
 }
 
-PriorityQueue::Interfaces::IRankedTree* PriorityQueue::Auxiliry::RankedRootsList::remove_first() noexcept
+PriorityQueue::Abstract::MeldableRankedBinaryTree* PriorityQueue::Auxiliry::RankedRootsList::remove_first() noexcept
 {
     assert(!is_empty());
 
-    Interfaces::IRankedTree* tree{ first->root };
+    Abstract::MeldableRankedBinaryTree* tree{ first->root };
     first->root = nullptr;
     Node* next{ first->next };
     delete first;
-
     first = next;
 
     return tree;
@@ -88,18 +89,18 @@ void PriorityQueue::Auxiliry::RankedRootsList::unite(Node* prev1, Node* node1, N
 
     if (node1->root->get_data().get_priority() < node2->root->get_data().get_priority())
     {
-        node1->root->meld(*node2->root);
+        node1->root->meld(node2->root);
         if (first == node2) first = node2->next;
         else prev2->next = node2->next;
-        
+        node2->root = nullptr;
         delete node2;
     }
     else
     {
-        node2->root->meld(*node1->root);
+        node2->root->meld(node1->root);
         if (first == node1) first = node1->next;
         else prev1->next = node1->next;
-
+        node1->root = nullptr;
         delete node1;
     }
 }

@@ -5,15 +5,18 @@
 
 namespace PriorityQueue
 {
-    namespace Interfaces
+    namespace Abstract
     {
-        __interface IPriorityElement
+        namespace Interfaces
         {
-        public:
+            __interface IPriorityElement
+            {
+            public:
 
-            virtual unsigned get_priority() const = 0;
-            virtual void set_priority(int new_priority) = 0;
-            virtual int get_id() const = 0;
-        };
+                virtual unsigned get_priority() const = 0;
+                virtual void set_priority(unsigned new_priority) = 0;
+                virtual int get_id() const = 0;
+            };
+        }
     }
 }   

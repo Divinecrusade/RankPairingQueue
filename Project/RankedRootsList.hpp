@@ -6,13 +6,13 @@ namespace PriorityQueue
 {
     namespace Auxiliry
     {
-        class RankedRootsList : public Interfaces::IRankedRootsList
+        class RankedRootsList : public Abstract::Interfaces::IRankedRootsList
         {
         private:
 
             struct Node
             {
-                Interfaces::IRankedTree* root;
+                Abstract::MeldableRankedBinaryTree* root;
                 Node* next{ nullptr };
             };
 
@@ -27,11 +27,11 @@ namespace PriorityQueue
 
             virtual ~RankedRootsList();
 
-            virtual void set_first(Interfaces::IRankedTree* root) override;
-            virtual void set_second(Interfaces::IRankedTree* root) override;
+            virtual void set_first(Abstract::MeldableRankedBinaryTree* root) override;
+            virtual void set_second(Abstract::MeldableRankedBinaryTree* root) override;
 
-            virtual Interfaces::IRankedTree const& get_first() const noexcept override;
-            virtual Interfaces::IRankedTree* remove_first() noexcept override;
+            virtual Abstract::MeldableRankedBinaryTree const& get_first() const noexcept override;
+            virtual Abstract::MeldableRankedBinaryTree* remove_first() noexcept override;
 
             virtual bool is_empty() const noexcept override;
 

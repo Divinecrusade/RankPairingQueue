@@ -131,18 +131,22 @@
     <ClInclude Include="Detail.hpp" />
     <ClInclude Include="IPriorityElement.hpp" />
     <ClInclude Include="IPriorityQueue.hpp" />
-    <ClInclude Include="IRankedBinaryTree.hpp" />
     <ClInclude Include="IRankedRootsList.hpp" />
     <ClInclude Include="IRankedTree.hpp" />
+    <ClInclude Include="MeldableRankedBinaryTree.hpp" />
+    <ClInclude Include="RankedBinaryTree.hpp" />
     <ClInclude Include="RankedHalfBinaryTree.hpp" />
     <ClInclude Include="RankedRootsList.hpp" />
     <ClInclude Include="RankPairingQueue.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Detail.cpp" />
+    <ClCompile Include="MeldableRankedBinaryTree.cpp" />
+    <ClCompile Include="RankedBinaryTree.cpp" />
     <ClCompile Include="RankedHalfBinaryTree.cpp" />
     <ClCompile Include="RankedRootsList.cpp" />
     <ClCompile Include="RankPairingQueue.cpp" />
+    <ClCompile Include="Unit1.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

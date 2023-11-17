@@ -2,29 +2,62 @@
 #include "RankedHalfBinaryTree.hpp"
 #include <stdexcept>
 
-void PriorityQueue::RankPairingQueue::insert(Interfaces::IPriorityElement& element)
+PriorityQueue::RankPairingQueue::~RankPairingQueue()
 {
-    Auxiliry::RankedHalfBinaryTree* new_root{ new Auxiliry::RankedHalfBinaryTree{ element } };
-    if (heap.is_empty()) heap.set_first(*new_root);
-    else
-    {
-        if (heap.get_first().get_data().get_priority() >= element.get_priority()) heap.set_first(*new_root);
-        else heap.set_second(*new_root);
-    }
+    delete heap;
 }
 
-PriorityQueue::Interfaces::IPriorityElement const& PriorityQueue::RankPairingQueue::minimum() const
+void PriorityQueue::RankPairingQueue::insert(Abstract::Interfaces::IPriorityElement& element)
 {
-    if (heap.is_empty()) throw std::runtime_error{ "Queue is empty" };
-    else return heap.get_first().get_data();
+    Auxiliry::RankedHalfBinaryTree* new_root{ new Auxiliry::RankedHalfBinaryTree{ element } };
+    push_to_heap(new_root);
+    heap->unite_trees_with_same_rank();
+}
+
+PriorityQueue::Abstract::Interfaces::IPriorityElement const& PriorityQueue::RankPairingQueue::minimum() const
+{
+    if (heap->is_empty()) throw std::runtime_error{ "Queue is empty" };
+    else return heap->get_first().get_data();
 }
 
 void PriorityQueue::RankPairingQueue::extract_min()
 {
-    Interfaces::IRankedBinaryTree& tree{ heap.remove_first() };
-    Interfaces::IRankedRootsList& new_roots{ tree.remove() };
+    Abstract::MeldableRankedBinaryTree* tree{ heap->remove_first() };
+    Abstract::MeldableRankedBinaryTree* left_root{ tree->remove_left_subtree() };
+    delete tree;
 
-    // new_roots.get_first -> heap.set_first -> new_roots.remove_first
-    // heap.unite
-    // delete treee
+    if (left_root)
+    {
+        Abstract::MeldableRankedBinaryTree* right_root{ nullptr };
+
+        do
+        {
+            right_root = left_root->remove_right_subtree();
+            push_to_heap(left_root);
+            left_root = right_root;
+        } while (left_root);
+
+        //split_and_push_to_heap(left_root);
+
+        heap->unite_trees_with_same_rank();
+    }
+}
+
+void PriorityQueue::RankPairingQueue::push_to_heap(Abstract::MeldableRankedBinaryTree* new_root) noexcept
+{
+    if (heap->is_empty()) heap->set_first(new_root);
+    else
+    {
+        if (heap->get_first().get_data().get_priority() >= new_root->get_data().get_priority()) heap->set_first(new_root);
+        else heap->set_second(new_root);
+    }
+}
+
+void PriorityQueue::RankPairingQueue::split_and_push_to_heap(Abstract::MeldableRankedBinaryTree* tree) noexcept
+{
+    if (!tree) return;
+    
+    split_and_push_to_heap(tree->remove_right_subtree());
+
+    push_to_heap(tree);
 }
