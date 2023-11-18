@@ -25,6 +25,8 @@ namespace PriorityQueue
             virtual Interfaces::IPriorityElement const& get_data() const noexcept override;
             virtual Interfaces::IPriorityElement& get_data() noexcept override;
 
+            virtual void remove() = 0;
+
         protected:
 
             virtual RankedBinaryTree const* get_left() const = 0;

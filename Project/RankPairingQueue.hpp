@@ -21,7 +21,7 @@ namespace PriorityQueue
         virtual void insert(Abstract::Interfaces::IPriorityElement& element) override;
         virtual Abstract::Interfaces::IPriorityElement const& minimum() const override;
         virtual void extract_min() override;
-        //virtual void decrease_key(Type const& data, unsigned priority) = 0;
+        virtual void decrease_key(Abstract::Interfaces::IPriorityElement const& data, unsigned priority);
 
     private:
         
