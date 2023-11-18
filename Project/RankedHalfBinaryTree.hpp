@@ -20,6 +20,10 @@ namespace PriorityQueue
             virtual ~RankedHalfBinaryTree() = default;
 
             virtual void meld(MeldableRankedBinaryTree* root) override;
+
+            virtual MeldableRankedBinaryTree* find(Abstract::Interfaces::IPriorityElement const& data) override;
+
+            virtual void attach(MeldableRankedBinaryTree* node) override;
         };
     }
 }

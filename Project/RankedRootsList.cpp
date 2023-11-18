@@ -104,3 +104,31 @@ void PriorityQueue::Auxiliry::RankedRootsList::unite(Node* prev1, Node* node1, N
         delete node1;
     }
 }
+
+PriorityQueue::Abstract::MeldableRankedBinaryTree* PriorityQueue::Auxiliry::RankedRootsList::extract_subtree(PriorityQueue::Abstract::Interfaces::IPriorityElement const& element)
+{
+    Node* list_element{ first };
+    Abstract::MeldableRankedBinaryTree* subtree{ nullptr };
+
+    while (list_element && !subtree)
+    {
+        subtree = list_element->root->find(element);
+
+        if (subtree)
+        {
+            Abstract::MeldableRankedBinaryTree* parent{ Abstract::MeldableRankedBinaryTree::get_parent(subtree) };
+            subtree->remove();
+
+            Abstract::MeldableRankedBinaryTree* right_subtree{ subtree->remove_right_subtree() };
+            if (parent)
+            {
+                parent->attach(right_subtree);
+                parent->update_rank();
+            }
+            else list_element->root = right_subtree;
+        }
+        else list_element = list_element->next;
+    }
+
+    return subtree;
+}

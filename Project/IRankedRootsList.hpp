@@ -9,6 +9,8 @@ namespace PriorityQueue
 
         namespace Interfaces
         {
+            __interface IPriorityElement;
+
             __interface IRankedRootsList
             {
             public:
@@ -22,6 +24,8 @@ namespace PriorityQueue
                 virtual bool is_empty() const noexcept;
 
                 virtual void unite_trees_with_same_rank() = 0;
+
+                virtual MeldableRankedBinaryTree* extract_subtree(IPriorityElement const& element) = 0;
             };
         }
     }
