@@ -43,3 +43,18 @@ void PriorityQueue::Auxiliry::RankedHalfBinaryTree::attach(MeldableRankedBinaryT
         bind_right(node);
     }
 }
+
+void PriorityQueue::Auxiliry::RankedHalfBinaryTree::replace(MeldableRankedBinaryTree* node1, MeldableRankedBinaryTree* node2)
+{
+    if (MeldableRankedBinaryTree::get_left(this) == node1)
+    {
+        node1->remove();
+        bind_left(node2);
+    }
+    else if (MeldableRankedBinaryTree::get_right(this) == node1)
+    {
+        node1->remove();
+        bind_right(node2);
+    }
+    else throw std::runtime_error{ "Node doesnt have this child to replace" };
+}
