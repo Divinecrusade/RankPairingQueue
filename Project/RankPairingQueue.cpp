@@ -30,17 +30,26 @@ void PriorityQueue::RankPairingQueue::extract_min()
     {
         Abstract::MeldableRankedBinaryTree* right_root{ nullptr };
 
-        do
+        /*do
         {
             right_root = left_root->remove_right_subtree();
             push_to_heap(left_root);
             left_root = right_root;
-        } while (left_root);
+        } while (left_root);*/
 
-        //split_and_push_to_heap(left_root);
+        split_and_push_to_heap(left_root);
 
         heap->unite_trees_with_same_rank();
     }
+}
+
+void PriorityQueue::RankPairingQueue::decrease_key(Abstract::Interfaces::IPriorityElement const& data, unsigned priority)
+{
+    Abstract::MeldableRankedBinaryTree* new_root{ heap->extract_subtree(data) };
+    new_root->get_data().set_priority(priority);
+    new_root->update_rank();
+
+    push_to_heap(new_root);
 }
 
 void PriorityQueue::RankPairingQueue::push_to_heap(Abstract::MeldableRankedBinaryTree* new_root) noexcept

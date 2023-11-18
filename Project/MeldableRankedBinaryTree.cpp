@@ -39,12 +39,44 @@ bool PriorityQueue::Abstract::MeldableRankedBinaryTree::is_root() const noexcept
     return parent == nullptr;
 }
 
+PriorityQueue::Abstract::MeldableRankedBinaryTree* PriorityQueue::Abstract::MeldableRankedBinaryTree::get_left(MeldableRankedBinaryTree const* node) noexcept
+{
+    assert(node);
+
+    return node->left;
+}
+
+PriorityQueue::Abstract::MeldableRankedBinaryTree* PriorityQueue::Abstract::MeldableRankedBinaryTree::get_right(MeldableRankedBinaryTree const* node) noexcept
+{
+    assert(node);
+
+    return node->right;
+}
+
+PriorityQueue::Abstract::MeldableRankedBinaryTree* PriorityQueue::Abstract::MeldableRankedBinaryTree::get_parent(MeldableRankedBinaryTree const* node) noexcept
+{
+    assert(node);
+
+    return node->parent;
+}
+
+void PriorityQueue::Abstract::MeldableRankedBinaryTree::update_rank() noexcept
+{
+    PriorityQueue::Abstract::RankedBinaryTree::update_rank();
+}
+
 PriorityQueue::Abstract::MeldableRankedBinaryTree*& PriorityQueue::Abstract::MeldableRankedBinaryTree::get_parent_ptr_on_me() const noexcept
 {
     assert(parent);
-    assert(left == this || right == this);
+    assert(parent->left == this || parent->right == this);
 
     return (parent->left == this ? parent->left : parent->right);
+}
+
+void PriorityQueue::Abstract::MeldableRankedBinaryTree::remove()
+{
+    if (parent) get_parent_ptr_on_me() = nullptr;
+    parent = nullptr;
 }
 
 PriorityQueue::Abstract::RankedBinaryTree const* PriorityQueue::Abstract::MeldableRankedBinaryTree::get_left() const noexcept
@@ -83,6 +115,7 @@ void PriorityQueue::Abstract::MeldableRankedBinaryTree::bind_left(MeldableRanked
     assert(!root || (root && !root->parent));
 
     left = root;
+    if (root) root->parent = this;
 }
 
 void PriorityQueue::Abstract::MeldableRankedBinaryTree::bind_right(MeldableRankedBinaryTree* root)
@@ -91,5 +124,6 @@ void PriorityQueue::Abstract::MeldableRankedBinaryTree::bind_right(MeldableRanke
     assert(!root || (root && !root->parent));
 
     right = root;
+    if (root) root->parent = this;
 }
 

@@ -37,6 +37,8 @@ namespace PriorityQueue
 
             virtual void unite_trees_with_same_rank() override;
 
+            virtual Abstract::MeldableRankedBinaryTree* extract_subtree(Abstract::Interfaces::IPriorityElement const& element) override;
+
         protected:
 
             void unite(Node* prev1, Node* node1, Node* prev2, Node* node2);
