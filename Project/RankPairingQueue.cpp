@@ -50,6 +50,8 @@ void PriorityQueue::RankPairingQueue::decrease_key(Abstract::Interfaces::IPriori
     new_root->update_rank();
 
     push_to_heap(new_root);
+
+    heap->unite_trees_with_same_rank();
 }
 
 void PriorityQueue::RankPairingQueue::push_to_heap(Abstract::MeldableRankedBinaryTree* new_root) noexcept

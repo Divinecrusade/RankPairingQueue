@@ -24,6 +24,7 @@ namespace PriorityQueue
             virtual MeldableRankedBinaryTree* find(Abstract::Interfaces::IPriorityElement const& data) override;
 
             virtual void attach(MeldableRankedBinaryTree* node) override;
+            virtual void replace(MeldableRankedBinaryTree* node1, MeldableRankedBinaryTree* node2) override;
         };
     }
 }

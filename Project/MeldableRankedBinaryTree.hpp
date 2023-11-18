@@ -30,6 +30,7 @@ namespace PriorityQueue
 
             virtual void remove() override;
             virtual void attach(MeldableRankedBinaryTree* node) = 0;
+            virtual void replace(MeldableRankedBinaryTree* node1, MeldableRankedBinaryTree* node2) = 0;
 
             static MeldableRankedBinaryTree* get_left(MeldableRankedBinaryTree const* node) noexcept;
             static MeldableRankedBinaryTree* get_right(MeldableRankedBinaryTree const* node) noexcept;
