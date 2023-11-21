@@ -18,11 +18,14 @@ PriorityQueue::Abstract::MeldableRankedBinaryTree* PriorityQueue::Auxiliry::Rank
     MeldableRankedBinaryTree* node{ this };
     
     while (node &&
-           !(node->get_data().get_priority() == data.get_priority() &&
-           node->get_data().get_id() == data.get_id()))
+           node->get_data().get_id() != data.get_id())
     {
-        if (node->get_data().get_priority() > data.get_priority()) node = MeldableRankedBinaryTree::get_right(node);
-        else node = MeldableRankedBinaryTree::get_left(node);
+        if (data.get_priority() >= node->get_data().get_priority()) 
+        {
+            MeldableRankedBinaryTree* left_subtree = MeldableRankedBinaryTree::get_left(node);
+            node = left_subtree ? left_subtree : MeldableRankedBinaryTree::get_right(node);
+        }
+        else node = MeldableRankedBinaryTree::get_right(node);
     }
 
     return node;
