@@ -10,18 +10,34 @@ int main()
     Detail details1[]{ {0, 0}, {-1, 1}, {-2, 2}, {-3, 3}, {-4, 4}, {-5, 5}, {-6, 6}, {-7, 7}, {-8, 8} , {-9, 9} , {-10, 10} };
     RankPairingQueue rpq{};
     
+    rpq.insert(details1[2U]);
+    rpq.insert(details1[7U]);
+    rpq.insert(details1[8U]);
+    rpq.insert(details1[10U]);
+    rpq.insert(details1[3U]);
+    rpq.insert(details1[4U]);
+    rpq.insert(details1[9U]);
     rpq.insert(details1[5U]);
     rpq.insert(details1[1U]);
-    rpq.insert(details1[4U]);
-    rpq.insert(details1[8U]);
-    rpq.insert(details1[9U]);
-
+    rpq.insert(details1[0U]);
+    rpq.insert(details1[6U]);
 
 
 
     std::cout << rpq.minimum().get_priority() << std::endl;
-    //rpq.extract_min();
     rpq.decrease_key(details1[8U], 0U);
+    std::cout << rpq.minimum().get_priority() << std::endl;
+    rpq.extract_min();
+    std::cout << rpq.minimum().get_priority() << std::endl;
+    rpq.extract_min();
+    std::cout << rpq.minimum().get_priority() << std::endl;
+    rpq.extract_min();
+    std::cout << rpq.minimum().get_priority() << std::endl;
+    rpq.extract_min();
+    std::cout << rpq.minimum().get_priority() << std::endl;
+    rpq.extract_min();
+    std::cout << rpq.minimum().get_priority() << std::endl;
+    rpq.extract_min();
     std::cout << rpq.minimum().get_priority() << std::endl;
     rpq.extract_min();
     std::cout << rpq.minimum().get_priority() << std::endl;

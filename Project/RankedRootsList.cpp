@@ -118,13 +118,10 @@ PriorityQueue::Abstract::MeldableRankedBinaryTree* PriorityQueue::Auxiliry::Rank
         if (subtree)
         {
             Abstract::MeldableRankedBinaryTree* parent{ Abstract::MeldableRankedBinaryTree::get_parent(subtree) };
-            //subtree->remove();
-
             Abstract::MeldableRankedBinaryTree* right_subtree{ subtree->remove_right_subtree() };
             if (parent)
             {
                 parent->replace(subtree, right_subtree);
-                //parent->attach(right_subtree);
                 parent->update_rank();
             }
             else 
