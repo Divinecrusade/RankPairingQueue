@@ -26,6 +26,11 @@ int main()
 
     std::cout << rpq.minimum().get_priority() << std::endl;
     rpq.decrease_key(details1[8U], 0U);
+    rpq.decrease_key(details1[5U], 0U);
+    rpq.decrease_key(details1[6U], 3U);
+    rpq.decrease_key(details1[4U], 2U);
+    rpq.decrease_key(details1[4U], 1U);
+
     std::cout << rpq.minimum().get_priority() << std::endl;
     rpq.extract_min();
     std::cout << rpq.minimum().get_priority() << std::endl;
