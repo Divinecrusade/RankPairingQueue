@@ -46,10 +46,13 @@ void PriorityQueue::RankPairingQueue::extract_min()
 void PriorityQueue::RankPairingQueue::decrease_key(Abstract::Interfaces::IPriorityElement const& data, unsigned priority)
 {
     Abstract::MeldableRankedBinaryTree* new_root{ heap->extract_subtree(data) };
-    new_root->get_data().set_priority(priority);
-    new_root->update_rank();
+    if (new_root)
+    {
+        new_root->get_data().set_priority(priority);
+        new_root->update_rank();
 
-    push_to_heap(new_root);
+        push_to_heap(new_root);
+    }
 
     heap->unite_trees_with_same_rank();
 }
