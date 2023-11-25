@@ -9,7 +9,7 @@ namespace PriorityQueue
     public:
     
         Detail(int id, unsigned priority);
-        Detail(Detail const& some_detail) = delete;
+        Detail(Detail const& some_detail);
         Detail(Detail&&) = delete;
 
         Detail& operator=(Detail const&) = delete;

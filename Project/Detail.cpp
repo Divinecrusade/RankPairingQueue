@@ -4,6 +4,12 @@
 PriorityQueue::Detail::Detail(int id, unsigned priority) : id{ id }, priority{ priority }
 { }
 
+PriorityQueue::Detail::Detail(Detail const& some_detail)
+:
+id{ some_detail.id },
+priority{ some_detail.priority }
+{ }
+
 unsigned PriorityQueue::Detail::get_priority() const
 {
     return priority;

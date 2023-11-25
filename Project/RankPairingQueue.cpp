@@ -1,6 +1,5 @@
 #include "RankPairingQueue.hpp"
 #include "RankedHalfBinaryTree.hpp"
-#include <stdexcept>
 
 PriorityQueue::RankPairingQueue::~RankPairingQueue()
 {
@@ -16,7 +15,7 @@ void PriorityQueue::RankPairingQueue::insert(Abstract::Interfaces::IPriorityElem
 
 PriorityQueue::Abstract::Interfaces::IPriorityElement const& PriorityQueue::RankPairingQueue::minimum() const
 {
-    if (heap->is_empty()) throw std::runtime_error{ "Queue is empty" };
+    if (heap->is_empty()) throw empty_queue{ "Queue is empty" };
     else return heap->get_first().get_data();
 }
 
@@ -29,13 +28,6 @@ void PriorityQueue::RankPairingQueue::extract_min()
     if (left_root)
     {
         Abstract::MeldableRankedBinaryTree* right_root{ nullptr };
-
-        /*do
-        {
-            right_root = left_root->remove_right_subtree();
-            push_to_heap(left_root);
-            left_root = right_root;
-        } while (left_root);*/
 
         split_and_push_to_heap(left_root);
 
