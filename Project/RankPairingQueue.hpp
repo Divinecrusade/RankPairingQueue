@@ -2,11 +2,21 @@
 
 #include "RankedRootsList.hpp"
 #include "IPriorityQueue.hpp"
+#include <stdexcept>
 
 namespace PriorityQueue
 {
     class RankPairingQueue : public Abstract::Interfaces::IPriorityQueue
     {
+    public:
+
+        class empty_queue : public std::runtime_error
+        {
+        public:
+
+            empty_queue(std::string message): std::runtime_error{ message } { };
+        };
+
     public:
         
         RankPairingQueue() = default;
