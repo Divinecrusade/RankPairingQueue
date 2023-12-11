@@ -128,7 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Detail.hpp" />
+    <ClInclude Include="Request.hpp" />
     <ClInclude Include="IPriorityElement.hpp" />
     <ClInclude Include="IPriorityQueue.hpp" />
     <ClInclude Include="IRankedRootsList.hpp" />
@@ -140,7 +140,7 @@
     <ClInclude Include="RankPairingQueue.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Detail.cpp" />
+    <ClCompile Include="Request.cpp" />
     <ClCompile Include="MeldableRankedBinaryTree.cpp" />
     <ClCompile Include="RankedBinaryTree.cpp" />
     <ClCompile Include="RankedHalfBinaryTree.cpp" />
