@@ -27,7 +27,7 @@ void PriorityQueue::RankPairingQueue::extract_min()
 
     if (left_root)
     {
-        Abstract::MeldableRankedBinaryTree* right_root{ nullptr };
+        Abstract::MeldableRankedBinaryTree* right_root{ nullptr }; //?????
 
         split_and_push_to_heap(left_root);
 
@@ -38,10 +38,10 @@ void PriorityQueue::RankPairingQueue::extract_min()
 void PriorityQueue::RankPairingQueue::decrease_key(Abstract::Interfaces::IPriorityElement const& data, unsigned priority)
 {
     Abstract::MeldableRankedBinaryTree* new_root{ heap->extract_subtree(data) };
-    if (new_root)
+    if (new_root) // ?????
     {
         new_root->get_data().set_priority(priority);
-        new_root->update_rank();
+        new_root->update_rank(); // ?????
 
         push_to_heap(new_root);
     }

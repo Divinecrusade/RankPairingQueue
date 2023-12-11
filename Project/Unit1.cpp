@@ -1,5 +1,5 @@
 #include "RankPairingQueue.hpp"
-#include "Detail.hpp"
+#include "Request.hpp"
 
 #include <iostream>
 #include <locale>
@@ -44,10 +44,10 @@ namespace
 
     static std::map<AppActions, wchar_t const* const> const AVAILABLE_ACTIONS
     {
-        { AppActions::ADD_DETAIL_TO_QUEUE, L"добавить новую деталь в очередь" },
-        { AppActions::SHOW_MINIMUM,        L"получить деталь с минимальным временем обслуживания в очереди" },
-        { AppActions::EXTRACT_MINIMUM,     L"извлечь деталь с минимальным временем обслуживания в очереди" },
-        { AppActions::DECREASE_KEY,        L"уменьшить время обслуживания детали" }
+        { AppActions::ADD_DETAIL_TO_QUEUE, L"добавить новую заявку в очередь" },
+        { AppActions::SHOW_MINIMUM,        L"получить заявку с минимальным временем обслуживания в очереди" },
+        { AppActions::EXTRACT_MINIMUM,     L"извлечь заявку с минимальным временем обслуживания в очереди" },
+        { AppActions::DECREASE_KEY,        L"уменьшить время обслуживания заявки" }
     };
 }
 
@@ -60,9 +60,9 @@ int wmain()
 
 
     AppActions choosen_action{ };
-    std::unordered_map<int, PriorityQueue::Detail> details{ };
+    std::unordered_map<int, PriorityQueue::Request> requests{ };
     std::unique_ptr<PriorityQueue::Abstract::Interfaces::IPriorityQueue> 
-    details_queue { std::make_unique<PriorityQueue::RankPairingQueue>() };
+    requests_queue { std::make_unique<PriorityQueue::RankPairingQueue>() };
 
 
     while (true)
@@ -85,22 +85,22 @@ int wmain()
                 int id{ };
                 unsigned int priority{ };
 
-                std::wcout << L"Введите идентификатор детали:         ";
+                std::wcout << L"Введите идентификатор заявки:         ";
                 std::wcin >> id;
                 
-                if (details.find(id) != details.end())
+                if (requests.find(id) != requests.end())
                 {
-                    std::wcout << L"Операция отменена: деталь с таким идентификатором уже находится в очереди\n";
+                    std::wcout << L"Операция отменена: заявка с таким идентификатором уже находится в очереди\n";
 
                     break;
                 }
 
-                std::wcout << L"Введите время на обслуживание детали: ";
+                std::wcout << L"Введите время на обслуживание заявки: ";
                 std::wcin >> priority;
 
-                details.emplace(id, PriorityQueue::Detail{ id, priority });
-                details_queue->insert(details.at(id));
-                std::wcout << L"Деталь добавлена в очередь\n";
+                requests.emplace(id, PriorityQueue::Request{ id, priority });
+                requests_queue->insert(requests.at(id));
+                std::wcout << L"Заявка добавлена в очередь\n";
             }
             break;
 
@@ -108,8 +108,8 @@ int wmain()
             {
                 try
                 {
-                    std::wcout << L"Сейчас в начале очереди элемент с идентификатором \n" << details_queue->minimum().get_id()
-                               << L" и временем на обслуживание " << details_queue->minimum().get_priority() << L'\n';
+                    std::wcout << L"Сейчас в начале очереди заявка с идентификатором \n" << requests_queue->minimum().get_id()
+                               << L" и временем на обслуживание " << requests_queue->minimum().get_priority() << L'\n';
                 }
                 catch (PriorityQueue::RankPairingQueue::empty_queue const&)
                 {
@@ -122,11 +122,11 @@ int wmain()
             {
                 try
                 {
-                    auto const& deleted_detail{ details_queue->minimum() };
-                    details_queue->extract_min();
-                    details.erase(deleted_detail.get_id());
+                    auto const& deleted_detail{ requests_queue->minimum() };
+                    requests_queue->extract_min();
+                    requests.erase(deleted_detail.get_id());
 
-                    std::wcout << L"Деталь извлечена из очереди\n";
+                    std::wcout << L"Заявка извлечена из очереди\n";
                 }
                 catch (PriorityQueue::RankPairingQueue::empty_queue const&)
                 {
@@ -139,12 +139,12 @@ int wmain()
             {
                 int id{ };
 
-                std::wcout << L"Введите идентификатор детали:                ";
+                std::wcout << L"Введите идентификатор заявки:                ";
                 std::wcin >> id;
 
-                if (details.find(id) == details.end())
+                if (requests.find(id) == requests.end())
                 {
-                    std::wcout << L"Операция отменена: деталь с таким идентификатором не обнаружено\n";
+                    std::wcout << L"Операция отменена: заявки с таким идентификатором не обнаружено\n";
                     
                     break;
                 }
@@ -153,16 +153,16 @@ int wmain()
                 std::wcout << L"Введите новое значение времени обслуживания: ";
                 std::wcin >> new_priority;
 
-                if (details.at(id).get_priority() <= new_priority)
+                if (requests.at(id).get_priority() <= new_priority)
                 {
                     std::wcout << L"Операция отменена: новое время обслуживания больше или равно текущему\n";
 
                     break;
                 }
 
-                details_queue->decrease_key(details.at(id), new_priority);
+                requests_queue->decrease_key(requests.at(id), new_priority);
 
-                std::wcout << L"Время обслуживания детали изменено\n";
+                std::wcout << L"Время обслуживания заявки изменено\n";
             }
             break;
 
