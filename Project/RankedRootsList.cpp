@@ -124,10 +124,10 @@ PriorityQueue::Abstract::MeldableRankedBinaryTree* PriorityQueue::Auxiliry::Rank
                 parent->replace(subtree, right_subtree);
                 parent->update_rank();
             }
-            else 
+            else
             {
-                list_element->root = right_subtree;
-                if (right_subtree) right_subtree->update_rank();
+                list_element->root = right_subtree; 
+                if (right_subtree) right_subtree->update_rank(); // ??????
                 else
                 {
                     if (prev_list_element) prev_list_element->next = list_element->next;

@@ -36,7 +36,7 @@
     <ClInclude Include="RankPairingQueue.hpp">
       <Filter>Файлы заголовков\main</Filter>
     </ClInclude>
-    <ClInclude Include="Detail.hpp">
+    <ClInclude Include="Request.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="IRankedRootsList.hpp">
@@ -59,7 +59,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Detail.cpp">
+    <ClCompile Include="Request.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="RankPairingQueue.cpp">

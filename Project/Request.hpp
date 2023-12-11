@@ -4,18 +4,18 @@
 
 namespace PriorityQueue
 {
-    class Detail : public Abstract::Interfaces::IPriorityElement
+    class Request : public Abstract::Interfaces::IPriorityElement
     {
     public:
     
-        Detail(int id, unsigned priority);
-        Detail(Detail const& some_detail);
-        Detail(Detail&&) = delete;
+        Request(int id, unsigned priority);
+        Request(Request const& some_detail);
+        Request(Request&&) = default;
 
-        Detail& operator=(Detail const&) = delete;
-        Detail& operator=(Detail&&) = delete;
+        Request& operator=(Request const&) = default;
+        Request& operator=(Request&&) = default;
 
-        virtual ~Detail() = default;
+        virtual ~Request() = default;
 
         virtual unsigned get_priority() const override;
         virtual void set_priority(unsigned new_priority) override;
