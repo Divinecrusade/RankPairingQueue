@@ -127,15 +127,12 @@ PriorityQueue::Abstract::MeldableRankedBinaryTree* PriorityQueue::Auxiliry::Rank
             else
             {
                 list_element->root = right_subtree; 
-                if (right_subtree) right_subtree->update_rank(); // ??????
-                else
-                {
-                    if (prev_list_element) prev_list_element->next = list_element->next;
-                    else first = list_element->next;
+             
+                if (prev_list_element) prev_list_element->next = list_element->next;
+                else first = list_element->next;
 
-                    delete list_element;
-                    list_element = nullptr;
-                }
+                delete list_element;
+                list_element = nullptr;
             }
         }
         else 
