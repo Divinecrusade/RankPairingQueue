@@ -27,8 +27,6 @@ void PriorityQueue::RankPairingQueue::extract_min()
 
     if (left_root)
     {
-        Abstract::MeldableRankedBinaryTree* right_root{ nullptr }; //?????
-
         split_and_push_to_heap(left_root);
 
         heap->unite_trees_with_same_rank();
