@@ -100,7 +100,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <WarningLevel>Level4</WarningLevel>
+      <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
@@ -128,26 +128,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="RootsList.hpp" />
-    <ClInclude Include="RBHalfTreeRoot.hpp" />
+    <ClInclude Include="Request.hpp" />
+    <ClInclude Include="IPriorityElement.hpp" />
+    <ClInclude Include="IPriorityQueue.hpp" />
+    <ClInclude Include="IRankedRootsList.hpp" />
+    <ClInclude Include="IRankedTree.hpp" />
+    <ClInclude Include="MeldableRankedBinaryTree.hpp" />
     <ClInclude Include="RankedBinaryTree.hpp" />
-    <ClInclude Include="Detail.hpp" />
-    <ClInclude Include="ForwardList.hpp" />
+    <ClInclude Include="RankedHalfBinaryTree.hpp" />
+    <ClInclude Include="RankedRootsList.hpp" />
     <ClInclude Include="RankPairingQueue.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Detail.cpp" />
-    <ClCompile Include="ForwardList.cpp" />
-    <ClCompile Include="RankPairingQueue.cpp" />
-    <ClCompile Include="RBHalfTreeRoot.cpp" />
+    <ClCompile Include="Request.cpp" />
+    <ClCompile Include="MeldableRankedBinaryTree.cpp" />
     <ClCompile Include="RankedBinaryTree.cpp" />
-    <ClCompile Include="RootsList.cpp" />
-    <ClCompile Include="TestForwardList.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="TestRankedBinaryTree.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="RankedHalfBinaryTree.cpp" />
+    <ClCompile Include="RankedRootsList.cpp" />
+    <ClCompile Include="RankPairingQueue.cpp" />
     <ClCompile Include="Unit1.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

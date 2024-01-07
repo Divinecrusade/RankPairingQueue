@@ -1,13 +1,22 @@
 #pragma once
 
-#include "Detail.hpp"
-#include "ForwardList.hpp"
-#include "RootsList.hpp"
+#include "RankedRootsList.hpp"
+#include "IPriorityQueue.hpp"
+#include <stdexcept>
 
 namespace PriorityQueue
 {
-    class RankPairingQueue
+    class RankPairingQueue : public Abstract::Interfaces::IPriorityQueue
     {
+    public:
+
+        class empty_queue : public std::runtime_error
+        {
+        public:
+
+            empty_queue(std::string message): std::runtime_error{ message } { };
+        };
+
     public:
         
         RankPairingQueue() = default;
@@ -17,15 +26,20 @@ namespace PriorityQueue
         RankPairingQueue& operator=(RankPairingQueue const&) = delete;
         RankPairingQueue& operator=(RankPairingQueue&&) = delete;
 
-        ~RankPairingQueue() = default;
+        virtual ~RankPairingQueue();
 
-        void insert(Detail const& element);
-        Detail const& minimum() const;
-        void extract_min();
-//        void decrease_key(int data, unsigned priority);
+        virtual void insert(Abstract::Interfaces::IPriorityElement& element) override;
+        virtual Abstract::Interfaces::IPriorityElement const& minimum() const override;
+        virtual void extract_min() override;
+        virtual void decrease_key(Abstract::Interfaces::IPriorityElement const& data, unsigned priority);
 
     private:
         
-        Auxiliry::RootsList heap{};
+        void push_to_heap(Abstract::MeldableRankedBinaryTree* new_root) noexcept;
+        void split_and_push_to_heap(Abstract::MeldableRankedBinaryTree* tree) noexcept;
+
+    private:
+
+        Abstract::Interfaces::IRankedRootsList* heap{ new Auxiliry::RankedRootsList{} };
     };
 }

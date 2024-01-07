@@ -1,53 +1,47 @@
 #pragma once
 
-#include "ForwardList.hpp"
-#include <cassert>
+#include "IRankedTree.hpp"
 
 namespace PriorityQueue
 {
-    namespace Auxiliry
+    namespace Abstract
     {
-        class RankedBinaryTree
+        class RankedBinaryTree : public Interfaces::IRankedTree
         {
         public:
-        
+
             RankedBinaryTree() = delete;
-            RankedBinaryTree(Detail const& some_detail);
+            RankedBinaryTree(Interfaces::IPriorityElement& data);
             RankedBinaryTree(RankedBinaryTree const&) = delete;
             RankedBinaryTree(RankedBinaryTree&&) = delete;
 
             RankedBinaryTree& operator=(RankedBinaryTree const&) = delete;
             RankedBinaryTree& operator=(RankedBinaryTree&&) = delete;
-        
-            ~RankedBinaryTree();
 
-            RankedBinaryTree* get_left() noexcept;
-            RankedBinaryTree* get_right() noexcept;
+            virtual ~RankedBinaryTree() = default;
 
-            void bind_left(RankedBinaryTree* root) noexcept;
-            void bind_right(RankedBinaryTree* root) noexcept;
+            virtual unsigned get_rank() const noexcept override;
 
-            void remove() noexcept;
+            virtual Interfaces::IPriorityElement const& get_data() const noexcept override;
+            virtual Interfaces::IPriorityElement& get_data() noexcept override;
 
-            unsigned get_rank() const noexcept;
+            virtual void remove() = 0;
+
+        protected:
+
+            virtual RankedBinaryTree const* get_left() const = 0;
+            virtual RankedBinaryTree* get_left() = 0;
+            virtual RankedBinaryTree const* get_right() const = 0;
+            virtual RankedBinaryTree* get_right() = 0;
+            virtual RankedBinaryTree const* get_parent() const = 0;
+            virtual RankedBinaryTree* get_parent() = 0;
+
             void update_rank() noexcept;
 
-            RankedBinaryTree* unbind_right() noexcept;
-
-            ForwardList*& get_data() noexcept;
-
         private:
 
-            RankedBinaryTree*& get_parent_ptr_on_me() noexcept;
-
-        private:
-
-            RankedBinaryTree* left{ nullptr };
-            RankedBinaryTree* right{ nullptr };
-            RankedBinaryTree* parent{ nullptr };
             unsigned rank{ 0U };
-
-            ForwardList* data{ nullptr };
+            Abstract::Interfaces::IPriorityElement& data;
         };
     }
 }
