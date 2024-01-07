@@ -1,92 +1,26 @@
 #include "RankedBinaryTree.hpp"
 
-PriorityQueue::Auxiliry::RankedBinaryTree::RankedBinaryTree(Detail const& some_detail) : data{ new ForwardList{ } }
-{
-    data->insert_front(some_detail);
-}
+PriorityQueue::Abstract::RankedBinaryTree::RankedBinaryTree(Abstract::Interfaces::IPriorityElement& data) : data{ data }
+{ }
 
-PriorityQueue::Auxiliry::RankedBinaryTree::~RankedBinaryTree()
-{
-    delete left;
-    delete right;
-    delete data;
-    left = right = nullptr;
-    data = nullptr;
-}
-
-PriorityQueue::Auxiliry::RankedBinaryTree* PriorityQueue::Auxiliry::RankedBinaryTree::get_left() noexcept
-{
-    return left;
-}
-
-PriorityQueue::Auxiliry::RankedBinaryTree* PriorityQueue::Auxiliry::RankedBinaryTree::get_right() noexcept
-{
-    return right;
-}
-
-void PriorityQueue::Auxiliry::RankedBinaryTree::bind_left(RankedBinaryTree* root) noexcept
-{
-    left = root;
-    if (root) root->parent = this;
-}
-
-void PriorityQueue::Auxiliry::RankedBinaryTree::bind_right(RankedBinaryTree* root) noexcept
-{
-    right = root;
-    if (root) root->parent = this;
-}
-
-void PriorityQueue::Auxiliry::RankedBinaryTree::remove() noexcept
-{
-    if (parent)
-    {
-        get_parent_ptr_on_me() = nullptr;
-    }
-    if (left) left->parent = nullptr;
-    if (right) right->parent = nullptr;
-}
-
-unsigned PriorityQueue::Auxiliry::RankedBinaryTree::get_rank() const noexcept
+unsigned PriorityQueue::Abstract::RankedBinaryTree::get_rank() const noexcept
 {
     return rank;
 }
 
-void PriorityQueue::Auxiliry::RankedBinaryTree::update_rank() noexcept
-{
-    if (!left && !right) rank = 0U;
-    else
-    {
-        unsigned left_rank = (!left ? 0U : left->get_rank());
-        unsigned right_rank = (!right ? 0U : right->get_rank());
-
-        rank = std::max(left_rank, right_rank) + ((std::max(left_rank, right_rank) - std::min(left_rank, right_rank) <= 1U) ? 1U : 0U);
-    }
-}
-
-PriorityQueue::Auxiliry::RankedBinaryTree* PriorityQueue::Auxiliry::RankedBinaryTree::unbind_right() noexcept
-{
-    RankedBinaryTree* tmp{ right };
-    if (right) right->parent = nullptr;
-    right = nullptr;
-    return tmp;
-}
-
-PriorityQueue::Auxiliry::ForwardList*& PriorityQueue::Auxiliry::RankedBinaryTree::get_data() noexcept
+PriorityQueue::Abstract::Interfaces::IPriorityElement const& PriorityQueue::Abstract::RankedBinaryTree::get_data() const noexcept
 {
     return data;
 }
 
-PriorityQueue::Auxiliry::RankedBinaryTree*& PriorityQueue::Auxiliry::RankedBinaryTree::get_parent_ptr_on_me() noexcept
+PriorityQueue::Abstract::Interfaces::IPriorityElement& PriorityQueue::Abstract::RankedBinaryTree::get_data() noexcept
 {
-    assert(parent);
-    assert(parent->left == this || parent->right == this);
+    return data;
+}
 
-    if (parent->left == this)
-    {
-        return parent->left;
-    }
-    else
-    {
-        return parent->right;
-    }
+void PriorityQueue::Abstract::RankedBinaryTree::update_rank() noexcept
+{
+    rank = (get_left() != nullptr ? (get_left()->update_rank(), get_left()->get_rank()) : 0U) +
+           (get_right() != nullptr ? (get_right()->update_rank(), get_right()->get_rank()) : 0U) +
+           (get_parent() != nullptr ? 0U : 1U);
 }
