@@ -22,50 +22,59 @@
     <Filter Include="Файлы заголовков\main">
       <UniqueIdentifier>{a7fe193b-ee5a-478f-92cf-e1f5d490796c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\abstract">
+      <UniqueIdentifier>{172c2e77-8f0b-4c0e-b099-08199b5e962a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ForwardList.hpp">
-      <Filter>Файлы заголовков\auxiliry</Filter>
+    <ClInclude Include="IPriorityQueue.hpp">
+      <Filter>Файлы заголовков\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IPriorityElement.hpp">
+      <Filter>Файлы заголовков\interfaces</Filter>
     </ClInclude>
     <ClInclude Include="RankPairingQueue.hpp">
       <Filter>Файлы заголовков\main</Filter>
     </ClInclude>
-    <ClInclude Include="Detail.hpp">
-      <Filter>Файлы заголовков\main</Filter>
+    <ClInclude Include="Request.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="IRankedRootsList.hpp">
+      <Filter>Файлы заголовков\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="RankedHalfBinaryTree.hpp">
+      <Filter>Файлы заголовков\auxiliry</Filter>
+    </ClInclude>
+    <ClInclude Include="RankedRootsList.hpp">
+      <Filter>Файлы заголовков\auxiliry</Filter>
+    </ClInclude>
+    <ClInclude Include="IRankedTree.hpp">
+      <Filter>Файлы заголовков\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="MeldableRankedBinaryTree.hpp">
+      <Filter>Файлы заголовков\abstract</Filter>
     </ClInclude>
     <ClInclude Include="RankedBinaryTree.hpp">
-      <Filter>Файлы заголовков\auxiliry</Filter>
-    </ClInclude>
-    <ClInclude Include="RBHalfTreeRoot.hpp">
-      <Filter>Файлы заголовков\main</Filter>
-    </ClInclude>
-    <ClInclude Include="RootsList.hpp">
-      <Filter>Файлы заголовков\auxiliry</Filter>
+      <Filter>Файлы заголовков\abstract</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="TestForwardList.cpp">
+    <ClCompile Include="Request.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="TestRankedBinaryTree.cpp">
+    <ClCompile Include="RankPairingQueue.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Detail.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="ForwardList.cpp">
+    <ClCompile Include="RankedRootsList.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="RankedBinaryTree.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="RBHalfTreeRoot.cpp">
+    <ClCompile Include="MeldableRankedBinaryTree.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="RootsList.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="RankPairingQueue.cpp">
+    <ClCompile Include="RankedHalfBinaryTree.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="Unit1.cpp">
