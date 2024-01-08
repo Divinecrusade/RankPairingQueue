@@ -13,7 +13,7 @@ namespace
 {
     enum class AppActions : int
     {
-        ADD_DETAIL_TO_QUEUE = 1,
+        ADD_TO_QUEUE        = 1,
         SHOW_MINIMUM        = 2,
         EXTRACT_MINIMUM     = 3,
         DECREASE_KEY        = 4,
@@ -28,7 +28,7 @@ namespace
 
         switch (d)
         {
-            case 1:  k =  AppActions::ADD_DETAIL_TO_QUEUE; break;
+            case 1:  k =  AppActions::ADD_TO_QUEUE;        break;
             case 2:  k =  AppActions::SHOW_MINIMUM;        break;
             case 3:  k =  AppActions::EXTRACT_MINIMUM;     break;
             case 4:  k =  AppActions::DECREASE_KEY;        break;
@@ -44,7 +44,7 @@ namespace
 
     static std::map<AppActions, wchar_t const* const> const AVAILABLE_ACTIONS
     {
-        { AppActions::ADD_DETAIL_TO_QUEUE, L"добавить новую заявку в очередь" },
+        { AppActions::ADD_TO_QUEUE,        L"добавить новую заявку в очередь" },
         { AppActions::SHOW_MINIMUM,        L"получить заявку с минимальным временем обслуживания в очереди" },
         { AppActions::EXTRACT_MINIMUM,     L"извлечь заявку с минимальным временем обслуживания в очереди" },
         { AppActions::DECREASE_KEY,        L"уменьшить время обслуживания заявки" }
