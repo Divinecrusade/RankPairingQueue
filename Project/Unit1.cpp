@@ -80,7 +80,7 @@ int wmain()
 
         switch (choosen_action)
         {
-            case AppActions::ADD_DETAIL_TO_QUEUE:
+            case AppActions::ADD_TO_QUEUE:
             {
                 int id{ };
                 unsigned int priority{ };
